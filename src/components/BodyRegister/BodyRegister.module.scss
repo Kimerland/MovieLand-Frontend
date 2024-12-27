@@ -1,0 +1,86 @@
+.main {
+  background-color: #202020;
+  min-height: 100vh;
+  font-family: "Outfit", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 207px;
+}
+
+.title {
+  color: #ff9800;
+  font-family: var(--third-family);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding-bottom: 35px;
+}
+
+.email {
+  text-align: left;
+}
+
+.password {
+  text-align: left;
+}
+
+input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  outline: none;
+  color: #ffffff;
+  width: 329px;
+}
+
+label {
+  color: #ffffff;
+  margin-bottom: 35px;
+}
+
+.login {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  color: #202020;
+  text-transform: uppercase;
+  line-height: 257%;
+  letter-spacing: 0.09em;
+}
+
+.butLog {
+  border-radius: 36px;
+  padding: 0px 16px;
+  width: 78px;
+  height: 36px;
+  background: #ff9800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  margin-bottom: 25px;
+}
+
+.userText {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 257%;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #ff9800;
+}
