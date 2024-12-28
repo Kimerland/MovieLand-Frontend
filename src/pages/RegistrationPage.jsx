@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "../components/Header/Header";
-import BodyRegister from "../components/BodyRegister/BodyRegister";
+import BodyRegistration from "../components/BodyRegistration/BodyRegistration";
 
-function RegistrationPage() {
+const RegistrationPage = () => {
   return (
     <>
       <Header />
-      <BodyRegister />
+      <BodyRegistration />
     </>
   );
-}
+};
 
 export default RegistrationPage;
