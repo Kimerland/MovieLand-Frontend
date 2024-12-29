@@ -3,24 +3,72 @@ import styles from "./BodyRegistration.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 
 const BodyRegistration = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const handleRegistration = (e) => {
+    e.preventDefault();
+
+    //email validity
+    const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailCheck.test(email)) {
+      alert("Invalid email!");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Mistake in pass!");
+      return;
+    }
+
+    const userFind = users.some((user) => user.email === email);
+
+    if (userFind) {
+      alert("We have this user!");
+      return;
+    }
+
+    users.push({ email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Complete!");
+
+    navigate("/movies");
+  };
+
   return (
     <main className={styles.main}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleRegistration}>
         <p className={styles.title}>MovieLand</p>
 
         <label>
           <p className={styles.email}>Email</p>
-          <input type="text" />
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </label>
 
         <label>
           <p className={styles.password}>Password</p>
-          <input type="text" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
 
         <label>
           <p className={styles.password}>Confirm Password</p>
-          <input type="text" />
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
         </label>
 
         <button className={styles.butLog} type="submit">

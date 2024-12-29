@@ -5,22 +5,46 @@ import { Link, useNavigate } from "react-router-dom";
 const BodyLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+
+  //   if (!email.includes("@")) {
+  //     alert("Please enter a valid email!");
+  //     return;
+  //   }
+
+  //   if (password.length < 6) {
+  //     alert("Password must be min 6 characters long!");
+  //     return;
+  //   }
+
+  //   localStorage.setItem("user", JSON.stringify({ email, password }));
+  //   alert("Successful!");
+
+  //   navigate("/movies");
+  // };
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    if (!email.includes("@")) {
-      alert("Please enter a valid email!");
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!storedUser) {
+      alert("User is not registered!");
       return;
     }
 
-    if (password.length < 6) {
-      alert("Password must be min 6 characters long!");
+    if (email !== storedUser.email || password !== storedUser.password) {
+      alert("Invalid email or password!");
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify({ email, password }));
-    alert("Successful!");
+    // Сохраняем состояние авторизации
+    localStorage.setItem("isLoggedIn", true);
+    alert("Successful login!");
+    navigate("/movies");
   };
 
   return (
