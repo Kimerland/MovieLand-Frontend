@@ -41,7 +41,6 @@ const BodyLogin = () => {
       return;
     }
 
-    // Сохраняем состояние авторизации
     localStorage.setItem("isLoggedIn", true);
     alert("Successful login!");
     navigate("/movies");
