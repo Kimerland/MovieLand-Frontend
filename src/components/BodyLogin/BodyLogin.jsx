@@ -31,7 +31,8 @@ const BodyLogin = () => {
       return;
     }
 
-    localStorage.setItem("currentUser", JSON.stringify(user));
+    // Сохраняем состояние авторизации
+    localStorage.setItem("isLoggedIn", true);
     alert("Successful login!");
 
     navigate("/movies");
