@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import MoviesPage from "./pages/MoviesPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
 
         <Route path="/movies" element={<MoviesPage />} />
+
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </div>
   );

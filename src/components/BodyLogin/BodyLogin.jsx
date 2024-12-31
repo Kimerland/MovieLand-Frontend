@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./BodyLogin.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -7,43 +7,33 @@ const BodyLogin = () => {
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-
-  //   if (!email.includes("@")) {
-  //     alert("Please enter a valid email!");
-  //     return;
-  //   }
-
-  //   if (password.length < 6) {
-  //     alert("Password must be min 6 characters long!");
-  //     return;
-  //   }
-
-  //   localStorage.setItem("user", JSON.stringify({ email, password }));
-  //   alert("Successful!");
-
-  //   navigate("/movies");
-  // };
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      navigate("/movies");
+    }
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (!storedUser) {
-      alert("User is not registered!");
+    const user = users.find((user) => user.email === email);
+
+    if (!user) {
+      alert("User is not registered");
       return;
     }
 
-    if (email !== storedUser.email || password !== storedUser.password) {
-      alert("Invalid email or password!");
+    if (user.password !== password) {
+      alert("Invalid password");
       return;
     }
 
-    // Сохраняем состояние авторизации
-    localStorage.setItem("isLoggedIn", true);
+    localStorage.setItem("currentUser", JSON.stringify(user));
     alert("Successful login!");
+
     navigate("/movies");
   };
 

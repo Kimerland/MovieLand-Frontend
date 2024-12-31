@@ -13,7 +13,6 @@ const BodyRegistration = () => {
   const handleRegistration = (e) => {
     e.preventDefault();
 
-    //email validity
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailCheck.test(email)) {
       alert("Invalid email!");
