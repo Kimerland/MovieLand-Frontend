@@ -6,6 +6,7 @@ const movies = [
     rating: 9.9,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_1.svg",
   },
   {
     id: Math.random(),
@@ -14,6 +15,7 @@ const movies = [
     rating: 8.8,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_2.svg",
   },
   {
     id: Math.random(),
@@ -22,6 +24,7 @@ const movies = [
     rating: 9.7,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_3.svg",
   },
   {
     id: Math.random(),
@@ -31,6 +34,7 @@ const movies = [
     rating: 9.1,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_4.svg",
   },
   {
     id: Math.random(),
@@ -39,6 +43,7 @@ const movies = [
     rating: 9.4,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_5.svg",
   },
   {
     id: Math.random(),
@@ -47,6 +52,7 @@ const movies = [
     rating: 9.9,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_6.svg",
   },
   {
     id: Math.random(),
@@ -55,6 +61,7 @@ const movies = [
     rating: 7.2,
     description:
       "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+    poster: "image_7.svg",
   },
 ];
 

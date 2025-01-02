@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import movies from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
+import SortBtn from "./SortBtn";
 
 const BodyMovies = () => {
   const [selectedGenre, setSelectedGenre] = useState("All");
   const [filtredMovies, setFiltredMovies] = useState([]);
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleGenreChange = (genre) => {
+    setSelectedGenre(genre);
+    setIsDropdownOpen(false);
+  };
 
   useEffect(() => {
     if (selectedGenre === "All") {
@@ -17,32 +25,39 @@ const BodyMovies = () => {
 
   return (
     <main className={styles.main}>
-      <p>All Films ({movies.length})</p>
-      <div>
-        <button>
+      <p className={styles.all_films}>All Films ({movies.length})</p>
+      <div className={styles.filter_wrapper}>
+        <button className={styles.filter_btn}>
           Genre
-          <select onChange={(e) => setSelectedGenre(e.target.value)}>
-            <option value="All">All</option>
-            <option value="Action">Action</option>
-            <option value="Golden Globe Winner">Golden Globe Winner</option>
-            <option value="Fiction">Fiction</option>
-          </select>
+          <img
+            src="arrow_drop_down.svg"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className={styles.arrow_icon}
+          />
+          {isDropdownOpen && (
+            <ul className={styles.dropdown_menu}>
+              <li onClick={() => handleGenreChange("All")}>All</li>
+              <li onClick={() => handleGenreChange("Action")}>Action</li>
+              <li onClick={() => handleGenreChange("Golden Globe Winner")}>
+                Golden
+              </li>
+              <li onClick={() => handleGenreChange("Fiction")}>Fiction</li>
+            </ul>
+          )}
         </button>
-
-        {/* button sort by raiting */}
-        <button>Sort by IMDb</button>
-
-        {/* <img src="arrow_drop_down.svg" />  */}
-
-        {/* make poster for my card */}
-        {filtredMovies.map((movie) => (
-          <div key={movie.id}>
-            <p>
-              {movie.title} {movie.genre} {movie.rating} {movie.description}
-            </p>
-          </div>
-        ))}
       </div>
+
+      {/* button sort by raiting */}
+      <SortBtn />
+
+      {filtredMovies.map((movie) => (
+        <div key={movie.id}>
+          <img src={movie.poster} className={styles.images} />
+          <p>
+            {movie.title} {movie.genre} {movie.rating} {movie.description}
+          </p>
+        </div>
+      ))}
     </main>
   );
 };
