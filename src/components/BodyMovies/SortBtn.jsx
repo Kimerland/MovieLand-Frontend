@@ -6,15 +6,26 @@ const SortBtn = () => {
   const [filtredMovies, setFiltredMovies] = useState([]);
 
   const handleSort = () => {
-    // function sorted
+    const sortedMovies = [...filtredMovies].sort((a, b) => {
+      return isAscending ? a.rating - b.rating : b.rating - a.rating;
+    });
+    setFiltredMovies(sortedMovies);
+    setIsAscending(!isAscending);
   };
 
   return (
-    <button className={styles.raiting_btn} onClick={handleSort}>
-      Sort by IMDb
-      <img src="swap_vert.svg" className={styles.swap_vert} />
-    </button>
+    <>
+      <button className={styles.raiting_btn} onClick={handleSort}>
+        Sort by IMDb
+        <img
+          src={isAscending ? "swap_vert_up.svg" : "swap_vert_down.svg"}
+          className={styles.swap_vert}
+        />
+      </button>
+    </>
   );
 };
 
 export default SortBtn;
+
+// fix sort in the future.

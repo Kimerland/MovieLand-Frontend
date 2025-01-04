@@ -5,7 +5,7 @@ const movies = [
     genre: "Action",
     rating: 9.9,
     description:
-      "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao)",
+      "It centers around two real-life Indian revolutionaries, Alluri Sitarama Raju (Charan) and Komaram Bheem (Rama Rao), their fictional friendship and their fight against the British Raj.",
     poster: "image_1.svg",
   },
   {
