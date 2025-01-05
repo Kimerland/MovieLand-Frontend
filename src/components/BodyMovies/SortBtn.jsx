@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from "./BodyMovies.module.scss";
 
-const SortBtn = () => {
+const SortBtn = ({ filtredMovies, setFiltredMovies }) => {
   const [isAscending, setIsAscending] = useState(true);
-  const [filtredMovies, setFiltredMovies] = useState([]);
 
   const handleSort = () => {
     const sortedMovies = [...filtredMovies].sort((a, b) => {
@@ -27,5 +26,3 @@ const SortBtn = () => {
 };
 
 export default SortBtn;
-
-// fix sort in the future.

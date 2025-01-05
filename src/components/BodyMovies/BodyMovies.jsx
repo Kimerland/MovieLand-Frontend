@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import movies from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
 import SortBtn from "./SortBtn";
+import WatchlistBtn from "./WatchlistBtn";
 
 const BodyMovies = () => {
   const [selectedGenre, setSelectedGenre] = useState("All");
@@ -47,11 +48,11 @@ const BodyMovies = () => {
             )}
           </button>
         </div>
-        <SortBtn />
+        <SortBtn
+          filtredMovies={filtredMovies}
+          setFiltredMovies={setFiltredMovies}
+        />
       </div>
-
-      {/* styles for this and fix html structure */}
-
       {filtredMovies.map((movie) => (
         <div key={movie.id} className={styles.card}>
           <img src={movie.poster} className={styles.images} />
@@ -69,9 +70,8 @@ const BodyMovies = () => {
             <p className={styles.describe_text}> {movie.description}</p>
             <div className={styles.important_btns}>
               <button className={styles.view_btn}>View Details</button>
-              <button className={styles.watchlist_btn}>
-                Add to Watchlists
-              </button>
+
+              <WatchlistBtn />
             </div>
           </div>
         </div>

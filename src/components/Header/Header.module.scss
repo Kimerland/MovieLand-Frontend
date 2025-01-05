@@ -42,6 +42,13 @@
   text-decoration: none;
 }
 
+.header_container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 376px;
+}
+
 .butLog {
   border-radius: 36px;
   padding: 0px 16px;
@@ -74,4 +81,20 @@
 
 .profile {
   max-width: 36px;
+}
+
+.watchlist_profile {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 257%;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.link_style {
+  text-decoration: none;
 }

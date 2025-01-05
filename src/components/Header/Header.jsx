@@ -19,7 +19,10 @@ const Header = () => {
             All Films
           </Link>
           {currentUser ? (
-            <div>
+            <div className={styles.header_container}>
+              <Link className={styles.link_style} to="/watchlist">
+                <p className={styles.watchlist_profile}>MY Watchlists</p>
+              </Link>
               <Link to="/profile">
                 <img className={styles.profile} src="/profile.png" />
               </Link>
