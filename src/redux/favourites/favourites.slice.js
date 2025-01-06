@@ -6,17 +6,18 @@ export const favouriteSlice = createSlice({
   name: "favourites",
   initialState,
   reducers: {
-    toogleFavourites: (state, { payload: recipe }) => {
-      const isExist = state.some((r) => r.id === recipe);
-
-      if (isExist) {
-        const index = state.findIndex((item) => item.id === recipe.id);
+    addMovie: (state, action) => {
+      const movie = action.payload;
+      if (!state.some((item) => item.id === movie.id)) {
+        state.push(movie);
       }
-      if (index !== -1) {
-        state.splice(index, 1);
-      } else state.push(recipe);
+    },
+    removeMovie: (state, action) => {
+      const movieId = action.payload;
+      return state.filter((movie) => movie.id !== movieId);
     },
   },
 });
 
+export const { addMovie, removeMovie } = favouriteSlice.actions;
 export const { actions, reducer } = favouriteSlice;

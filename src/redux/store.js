@@ -6,5 +6,8 @@ const reducers = combineReducers({
 });
 
 export const store = configureStore({
-  reducer: reducers,
+  reducer: {
+    favourites: favouritesReducer,
+    reducers,
+  },
 });

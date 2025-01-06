@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import movies from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
-import SortBtn from "./SortBtn";
-import WatchlistBtn from "./WatchlistBtn";
+import SortBtn from "../SortBtn/SortBtn";
+import WatchlistBtn from "../WatchlistBtn/WatchlistBtn";
 
 const BodyMovies = () => {
   const [selectedGenre, setSelectedGenre] = useState("All");
@@ -71,7 +71,7 @@ const BodyMovies = () => {
             <div className={styles.important_btns}>
               <button className={styles.view_btn}>View Details</button>
 
-              <WatchlistBtn />
+              <WatchlistBtn movie={movie} />
             </div>
           </div>
         </div>

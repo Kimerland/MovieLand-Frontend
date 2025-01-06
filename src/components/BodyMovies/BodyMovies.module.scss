@@ -187,10 +187,9 @@
 }
 
 .watchlist_btn {
+  border-radius: 48px;
   border: 1px solid #fff;
   background: transparent;
-  border-radius: 48px;
-  width: 189px;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 14px;
@@ -200,4 +199,28 @@
   text-align: center;
   color: #fff;
   cursor: pointer;
+}
+
+.my_watchlist {
+  --font-family: "Roboto", sans-serif;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 118%;
+  letter-spacing: 0.01em;
+  color: #fff;
+  padding-bottom: 40px;
+}
+
+// add more information for no_movie
+
+.no_movie {
+  --font-family: "Roboto", sans-serif;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 118%;
+  letter-spacing: 0.01em;
+  color: #fff;
+  padding-bottom: 40px;
 }
