@@ -4,6 +4,7 @@ import { removeMovie } from "../redux/favourites/favourites.slice";
 import Header from "../components/Header/Header";
 import styles from "./../components/BodyMovies/BodyMovies.module.scss";
 import movies from "../components/BodyMovies/dataMovies";
+import ViewDetails from "../components/ViewDetails/ViewDetails";
 
 const WatchlistPage = () => {
   const favourites = useSelector((state) => state.favourites);
@@ -38,7 +39,7 @@ const WatchlistPage = () => {
 
                   <p className={styles.describe_text}> {movie.description}</p>
                   <div className={styles.important_btns}>
-                    <button className={styles.view_btn}>View Details</button>
+                    <ViewDetails />
                     <button
                       className={styles.watchlist_btn}
                       onClick={() => handleRemove(movie.id)}

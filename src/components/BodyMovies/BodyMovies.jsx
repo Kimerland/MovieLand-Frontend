@@ -3,6 +3,7 @@ import movies from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
 import SortBtn from "../SortBtn/SortBtn";
 import WatchlistBtn from "../WatchlistBtn/WatchlistBtn";
+import ViewDetails from "../ViewDetails/ViewDetails";
 
 const BodyMovies = () => {
   const [selectedGenre, setSelectedGenre] = useState("All");
@@ -69,7 +70,7 @@ const BodyMovies = () => {
 
             <p className={styles.describe_text}> {movie.description}</p>
             <div className={styles.important_btns}>
-              <button className={styles.view_btn}>View Details</button>
+              <ViewDetails />
 
               <WatchlistBtn movie={movie} />
             </div>

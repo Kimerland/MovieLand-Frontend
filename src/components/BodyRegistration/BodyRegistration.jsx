@@ -33,9 +33,9 @@ const BodyRegistration = () => {
 
     users.push({ email, password });
     localStorage.setItem("users", JSON.stringify(users));
-    alert("Complete!");
+    alert("Complete! Now please login");
 
-    navigate("/movies");
+    navigate("/");
   };
 
   return (

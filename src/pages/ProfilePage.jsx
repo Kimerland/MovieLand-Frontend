@@ -1,9 +1,10 @@
 import React from "react";
+import Header from "../components/Header/Header";
 
 const profilePage = () => {
   return (
     <>
-      <h1>hello</h1>
+      <Header />
     </>
   );
 };
