@@ -70,7 +70,7 @@ const BodyMovies = () => {
 
             <p className={styles.describe_text}> {movie.description}</p>
             <div className={styles.important_btns}>
-              <ViewDetails />
+              <ViewDetails movie={movie} />
 
               <WatchlistBtn movie={movie} />
             </div>

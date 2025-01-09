@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "../BodyMovies/BodyMovies.module.scss";
-import ModalTest from "../Modal/Modal";
+import Modal from "../Modal/Modal";
 
-const ViewDetails = () => {
+const ViewDetails = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -20,7 +20,7 @@ const ViewDetails = () => {
       {showModal &&
         createPortal(
           <>
-            <ModalTest onClose={() => setShowModal(false)} />
+            <Modal movie={movie} onClose={() => setShowModal(false)} />
           </>,
           document.body
         )}

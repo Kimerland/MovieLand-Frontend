@@ -39,7 +39,7 @@ const WatchlistPage = () => {
 
                   <p className={styles.describe_text}> {movie.description}</p>
                   <div className={styles.important_btns}>
-                    <ViewDetails />
+                    <ViewDetails movie={movie} />
                     <button
                       className={styles.watchlist_btn}
                       onClick={() => handleRemove(movie.id)}

@@ -17,6 +17,7 @@
 .images {
   width: "150px";
   height: "auto";
+  border-radius: 10px;
 }
 
 .filter_container {
@@ -102,10 +103,6 @@
   color: #fff;
   display: flex;
   padding-bottom: 32px;
-}
-
-.images {
-  border-radius: 10px;
 }
 
 .card_contnet {
