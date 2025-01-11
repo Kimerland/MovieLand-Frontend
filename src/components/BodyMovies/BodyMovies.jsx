@@ -62,7 +62,7 @@ const BodyMovies = () => {
             <button className={styles.genre_btn}>{movie.genre}</button>
 
             <div className={styles.raiting_body}>
-              <img src="IMDB.svg" />
+              <img src="IMDB.svg" className={styles.img_imdb} />
               <p className={styles.raiting_text}>
                 {movie.rating} <img src="star-icon.svg" />
               </p>

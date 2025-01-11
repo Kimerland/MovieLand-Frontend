@@ -16,8 +16,11 @@ export const favouriteSlice = createSlice({
       const movieId = action.payload;
       return state.filter((movie) => movie.id !== movieId);
     },
+    initialWatch: (state, action) => {
+      return Array.isArray(action.payload) ? action.payload : [];
+    },
   },
 });
 
-export const { addMovie, removeMovie } = favouriteSlice.actions;
+export const { addMovie, removeMovie, initialWatch } = favouriteSlice.actions;
 export const { actions, reducer } = favouriteSlice;

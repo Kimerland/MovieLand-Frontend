@@ -1,0 +1,37 @@
+.main_profile {
+  background-color: #202020;
+  min-height: 100vh;
+}
+
+.text_profile {
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  line-height: 2.25rem;
+  font-size: 1.75rem;
+  letter-spacing: 0;
+  font-weight: 400;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: var(--identity-common-ui-components-web-color-on-background);
+  text-align: center;
+}
+
+.customize_profile {
+  font-family: var(--identity-gm3-migration-body1-font);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0rem;
+  line-height: 1.5;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.customize_search {
+  display: flex;
+  width: 100%;
+  border-radius: 24px;
+  align-items: center;
+}

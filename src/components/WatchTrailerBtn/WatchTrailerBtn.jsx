@@ -2,6 +2,7 @@ import React from "react";
 import TrailerStyles from "../WatchTrailerBtn/WatchTrailerBtn.module.scss";
 
 const WatchTrailerBtn = ({ movie }) => {
+  
   const openTrailer = () => {
     window.open(movie.trailer);
   };

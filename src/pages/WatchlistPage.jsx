@@ -1,24 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeMovie } from "../redux/favourites/favourites.slice";
+import {
+  initialWatch,
+  removeMovie,
+} from "../redux/favourites/favourites.slice";
 import Header from "../components/Header/Header";
 import styles from "./../components/BodyMovies/BodyMovies.module.scss";
-import movies from "../components/BodyMovies/dataMovies";
 import ViewDetails from "../components/ViewDetails/ViewDetails";
 
 const WatchlistPage = () => {
   const favourites = useSelector((state) => state.favourites);
+  console.log("Current favourites:", favourites);
+
   const dispatch = useDispatch();
 
   const handleRemove = (id) => {
     dispatch(removeMovie(id));
   };
 
+  useEffect(() => {
+    if (favourites.length === 0) {
+      const watchList = JSON.parse(localStorage.getItem("watchusers") || "[]");
+      if (watchList.length > 0) {
+        console.log("Loaded from localStorage:", watchList);
+        dispatch(initialWatch(watchList));
+      }
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem("watchusers", JSON.stringify(favourites));
+    console.log("Saving to localStorage:", favourites);
+  }, [favourites]);
+
   return (
     <>
       <Header />
       <main className={styles.main}>
-        <p className={styles.my_watchlist}>My watchlist ({movies.length})</p>
+        <p className={styles.my_watchlist}>
+          My watchlist ({favourites.length})
+        </p>
         {favourites.length === 0 ? (
           <p className={styles.no_movie}>No movie!</p>
         ) : (
