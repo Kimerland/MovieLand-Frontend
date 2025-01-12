@@ -1,37 +1,89 @@
-.main_profile {
+.page_profile {
+  display: flex;
+  flex-direction: column;
   background-color: #202020;
   min-height: 100vh;
 }
 
+.nav_profile {
+  position: fixed;
+  top: 100;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  padding: 16px;
+}
+
+.nav_profile ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.nav_item {
+  font-family: "Roboto", sans-serif;
+  padding: 8px 12px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav_icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.home_text {
+  display: flex;
+  align-items: center;
+}
+
+.profile_header {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.img_block {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.profile_img {
+  width: 50px;
+  height: 50px;
+}
+
 .text_profile {
+  color: #fff;
   font-family: "Google Sans", Roboto, Arial, sans-serif;
   line-height: 2.25rem;
   font-size: 1.75rem;
   letter-spacing: 0;
   font-weight: 400;
-  hyphens: auto;
-  word-break: break-word;
-  word-wrap: break-word;
-  color: var(--identity-common-ui-components-web-color-on-background);
   text-align: center;
 }
 
-.customize_profile {
-  font-family: var(--identity-gm3-migration-body1-font);
+.subtitle_profile {
+  color: #bdbdbd;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0rem;
   line-height: 1.5;
-  hyphens: auto;
-  word-break: break-word;
-  word-wrap: break-word;
   margin-top: 16px;
   text-align: center;
 }
 
-.customize_search {
+.main_content_profile {
+  padding-top: 20px;
   display: flex;
-  width: 100%;
-  border-radius: 24px;
+  flex-direction: column;
   align-items: center;
 }
