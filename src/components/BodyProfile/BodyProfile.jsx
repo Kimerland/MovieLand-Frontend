@@ -6,6 +6,8 @@ import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import HttpsIcon from "@mui/icons-material/Https";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PaymentIcon from "@mui/icons-material/Payment";
+import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 const BodyProfile = () => {
   return (
@@ -74,18 +76,29 @@ const BodyProfile = () => {
 
       <main className={ProfileStyle.main_content_profile}>
         <div className={ProfileStyle.search_bar}>
-          <input type="text" placeholder="Search in account" />
+          <SearchIcon />
+          <input
+            className={ProfileStyle.search_anything}
+            type="text"
+            placeholder="Search in account"
+          />
         </div>
 
         <section className={ProfileStyle.profile_cards}>
           <div className={ProfileStyle.profile_card}>
-            <p>Privacy and personalization</p>
-            <p>Find out what data is stored in your account.</p>
+            <div className={ProfileStyle.profile_card_content}>
+              <p>Privacy and personalization</p>
+              <p>Find out what data is stored in your account.</p>
+            </div>
+            <Link>Manage your data</Link>
           </div>
 
           <div className={ProfileStyle.profile_card}>
-            <p>Recommendations for protection</p>
-            <p>Make sure your account is secure.</p>
+            <div className={ProfileStyle.profile_card_content}>
+              <p>Recommendations for protection</p>
+              <p>Make sure your account is secure.</p>
+            </div>
+            <Link>Protect your account</Link>
           </div>
         </section>
       </main>

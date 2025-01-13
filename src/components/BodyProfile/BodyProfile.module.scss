@@ -87,3 +87,43 @@
   flex-direction: column;
   align-items: center;
 }
+
+.search_bar {
+  position: relative;
+  background-color: #bdbdbd;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  gap: 5px;
+}
+
+.profile_cards {
+  padding-top: 20px;
+  display: flex;
+  gap: 25px;
+  margin: 20px 0;
+  width: 700px;
+  height: 200px;
+}
+
+.profile_card {
+  background: transparent;
+  border: 1px solid #ff9800;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile_card_content {
+  color: #bdbdbd;
+}

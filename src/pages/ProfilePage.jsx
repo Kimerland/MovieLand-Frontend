@@ -5,7 +5,7 @@ import BodyProfile from "../components/BodyProfile/BodyProfile";
 const profilePage = () => {
   return (
     <>
-      <Header />
+      <Header isSticky={true} />
       <BodyProfile />
     </>
   );

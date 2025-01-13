@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ isSticky }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isSticky ? styles.sticky : ""}`}>
       <div className={styles.wrapper}>
         <p className={styles.title}>MovieLand</p>
         <div className={styles.rightSection}>
