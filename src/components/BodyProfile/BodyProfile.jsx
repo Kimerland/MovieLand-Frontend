@@ -6,8 +6,8 @@ import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import HttpsIcon from "@mui/icons-material/Https";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PaymentIcon from "@mui/icons-material/Payment";
-import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
+import SearchBtn from "../SearchBtn/SearchBtn";
 
 const BodyProfile = () => {
   return (
@@ -18,44 +18,57 @@ const BodyProfile = () => {
           <li className={ProfileStyle.nav_item}>
             <div className={ProfileStyle.nav_icon}>
               <AccountCircleIcon />
-              <p className={ProfileStyle.home_text}>Home</p>
+              <Link to="/profile" className={ProfileStyle.home_text}>
+                Home
+              </Link>
             </div>
           </li>
 
           <li className={ProfileStyle.nav_item}>
             <div className={ProfileStyle.nav_icon}>
               <BadgeIcon />
-              <p className={ProfileStyle.home_text}>Personal information</p>
+              <Link
+                to="/PersonalInformation"
+                className={ProfileStyle.home_text}
+              >
+                Personal information
+              </Link>
             </div>
           </li>
 
           <li className={ProfileStyle.nav_item}>
             <div className={ProfileStyle.nav_icon}>
               <ToggleOnIcon />
-              <p className={ProfileStyle.home_text}>Data and Privacy</p>
+              <Link to="/data" className={ProfileStyle.home_text}>
+                Data and Privacy
+              </Link>
             </div>
           </li>
 
           <li className={ProfileStyle.nav_item}>
             <div className={ProfileStyle.nav_icon}>
               <HttpsIcon />
-              <p className={ProfileStyle.home_text}>Security</p>
+              <Link to="/security" className={ProfileStyle.home_text}>
+                Security
+              </Link>
             </div>
           </li>
 
           <li className={ProfileStyle.nav_item}>
             <div className={ProfileStyle.nav_icon}>
               <PeopleAltIcon />
-              <p className={ProfileStyle.home_text}>Access Settings</p>
+              <Link to="/AccessSettings" className={ProfileStyle.home_text}>
+                Access Settings
+              </Link>
             </div>
           </li>
 
           <li className={ProfileStyle.nav_item}>
             <div className={ProfileStyle.nav_icon}>
               <PaymentIcon />
-              <p className={ProfileStyle.home_text}>
+              <Link to="/payments" className={ProfileStyle.home_text}>
                 Payments and Subscriptions
-              </p>
+              </Link>
             </div>
           </li>
         </ul>
@@ -75,14 +88,7 @@ const BodyProfile = () => {
       </header>
 
       <main className={ProfileStyle.main_content_profile}>
-        <div className={ProfileStyle.search_bar}>
-          <SearchIcon />
-          <input
-            className={ProfileStyle.search_anything}
-            type="text"
-            placeholder="Search in account"
-          />
-        </div>
+        <SearchBtn />
 
         <section className={ProfileStyle.profile_cards}>
           <div className={ProfileStyle.profile_card}>
