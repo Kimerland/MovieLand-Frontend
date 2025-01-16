@@ -44,45 +44,6 @@
   color: #fff;
 }
 
-.profile_header {
-  margin-left: 250px;
-  width: calc(100% - 250px);
-  margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 10px;
-}
-
-.img_block {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.profile_img {
-  width: 50px;
-  height: 50px;
-}
-
-.text_profile {
-  color: #fff;
-  font-family: "Google Sans", Roboto, Arial, sans-serif;
-  line-height: 2.25rem;
-  font-size: 1.75rem;
-  letter-spacing: 0;
-  font-weight: 400;
-  text-align: center;
-}
-
-.subtitle_profile {
-  color: #bdbdbd;
-  font-size: 1rem;
-  font-weight: 400;
-  letter-spacing: 0rem;
-  line-height: 1.5;
-  margin-top: 16px;
-  text-align: center;
-}
-
 .main_content_profile {
   padding-top: 20px;
   display: flex;

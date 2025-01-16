@@ -8,6 +8,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PaymentIcon from "@mui/icons-material/Payment";
 import { Link } from "react-router-dom";
 import SearchBtn from "../SearchBtn/SearchBtn";
+import HeaderProfile from "../HeaderProfile/HeaderProfile";
 
 const BodyProfile = () => {
   return (
@@ -75,17 +76,7 @@ const BodyProfile = () => {
       </nav>
 
       {/* Header */}
-      <header className={ProfileStyle.profile_header}>
-        <div className={ProfileStyle.img_block}>
-          <img src="profile.png" className={ProfileStyle.profile_img} />
-        </div>
-
-        <p className={ProfileStyle.text_profile}>Welcome, user!</p>
-        <p className={ProfileStyle.subtitle_profile}>
-          Customize your privacy and security settings to make your experience
-          even better. Learn more…
-        </p>
-      </header>
+      <HeaderProfile />
 
       <main className={ProfileStyle.main_content_profile}>
         <SearchBtn />

@@ -1,0 +1,129 @@
+.acc_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.acc_wrapper {
+  background: #202020;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  width: 400px;
+  min-height: 700px;
+}
+
+.acc_header {
+  padding: 0 16px;
+  padding-bottom: 16px;
+}
+
+.close_btn {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #606060;
+}
+
+.acc_movieland {
+  text-transform: uppercase;
+  color: #ff9800;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.09em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ff9800;
+}
+
+.profile_section {
+  margin-bottom: 16px;
+}
+
+.acc_section {
+  padding-bottom: 10px;
+}
+
+.modal_title {
+  position: relative;
+  right: 100px;
+  color: #fff;
+  font-family: "Google Sans";
+  font-size: 1.375rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.75rem;
+  margin: 0 10px;
+  padding: 0;
+}
+
+.modal_description {
+  margin: 4px 0;
+  color: #9e9e9e;
+  margin-top: 8px;
+  font-family: "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25rem;
+}
+
+.avatar_flex {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar_image {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+}
+
+.action_section {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.account_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #ff9800;
+  color: #0f172a;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-size: 16px;
+
+  &:hover {
+    background-color:  #fdab30;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    background-color: #ffc062;
+    transform: scale(1.02);
+  }
+}
