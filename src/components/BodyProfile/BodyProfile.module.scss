@@ -89,4 +89,45 @@
 
 .profile_card_content {
   color: #bdbdbd;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.card_text {
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  line-height: 1.75rem;
+  font-size: 1.375rem;
+  font-weight: 400;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.card_description {
+  font-family: "Google Sans Text", "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0rem;
+  line-height: 1.4285714286;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 0;
+  padding: 8px 0 0;
+}
+
+.prof_icon {
+  position: absolute;
+  top: 40%;
+  left: 90%;
+  font-size: 16px;
+  // padding: 8px;
+  // display: flex;
+  display: block;
+  align-items: center;
+  justify-content: center;
 }

@@ -2,12 +2,27 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-const Header = ({ isSticky }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+interface User {
+  user?: object;
+}
+
+interface HeaderProps {
+  isSticky: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isSticky }) => {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("currentUser"));
-    setCurrentUser(user);
+    const user = localStorage.getItem("currentUser");
+    if (user) {
+      try {
+        const parsedUser: User = JSON.parse(user);
+        setCurrentUser(parsedUser);
+      } catch (error) {
+        console.log("Invalid user data in LocalStorage", error);
+      }
+    }
   }, []);
 
   return (

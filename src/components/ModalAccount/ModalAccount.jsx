@@ -4,8 +4,12 @@ import ModalAccStyles from "../ModalAccount/ModalAccount.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import PublicIcon from "@mui/icons-material/Public";
+import { Link } from "react-router-dom";
 
 const ModalAccount = ({ onClose, avatar, setAvatar }) => {
+  const userId = "123456";
+
   const fileInputRef = useRef(null);
 
   const handleAvatarChange = async (event) => {
@@ -31,13 +35,12 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
 
   const handleAvatarDel = async () => {
     try {
-      await axios.delete("http://localhost:5000/upload-avatar", {
-        data: { avatar },
-      });
+      const userId = "id users";
+      await axios.delete(`http://localhost:5000/upload-avatar/${userId}`);
       setAvatar("profile.png");
-      onclose();
+      onClose();
     } catch (error) {
-      console.error("Error del", error);
+      console.error("Error deleting avatar:", error);
     }
   };
 
@@ -56,6 +59,21 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/user/${userId}`
+        );
+        setAvatar(response.data.avatar || "profile.png");
+      } catch (error) {
+        console.error("Error user data:", error);
+      }
+    };
+
+    fetchUser();
   }, []);
 
   return (
@@ -77,9 +95,29 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
               into.
             </p>
 
+            <div className={ModalAccStyles.acc_content}>
+              <button className={ModalAccStyles.acc_agreement}>
+                <PublicIcon className={ModalAccStyles.icon} />
+                <span>The profile icon is visible to everyone</span>
+              </button>
+            </div>
+
+            <div className={ModalAccStyles.birthday_card}>
+              <div className={ModalAccStyles.birthday_card_content}>
+                <p>Your birthday is coming soon</p>
+                <p>
+                  Allow others to see your birthday in your profile so they can
+                  know about your upcoming celebration.
+                </p>
+                <Link className={ModalAccStyles.birthday_card_link}>
+                  Change settings
+                </Link>
+              </div>
+            </div>
+
             <div className={ModalAccStyles.avatar_flex}>
               <img
-                src={avatar || "profile.png"}
+                src={`http://localhost:5000${avatar}` || "profile.png"}
                 className={ModalAccStyles.avatar_image}
               />
             </div>

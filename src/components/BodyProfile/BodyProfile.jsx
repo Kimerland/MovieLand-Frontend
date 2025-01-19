@@ -9,6 +9,7 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import { Link } from "react-router-dom";
 import SearchBtn from "../SearchBtn/SearchBtn";
 import HeaderProfile from "../HeaderProfile/HeaderProfile";
+import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
 
 const BodyProfile = () => {
   return (
@@ -84,16 +85,28 @@ const BodyProfile = () => {
         <section className={ProfileStyle.profile_cards}>
           <div className={ProfileStyle.profile_card}>
             <div className={ProfileStyle.profile_card_content}>
-              <p>Privacy and personalization</p>
-              <p>Find out what data is stored in your account.</p>
+              <div className={ProfileStyle.prof_icon}>
+                {/* add icon styles right */}
+                <SettingsAccessibilityIcon style={{ color: "#ff9800" }} />
+              </div>
+              <h2 className={ProfileStyle.card_text}>
+                Privacy and personalization
+              </h2>
+              <div className={ProfileStyle.card_description}>
+                Find out what data is stored in your account.
+              </div>
             </div>
             <Link>Manage your data</Link>
           </div>
 
           <div className={ProfileStyle.profile_card}>
             <div className={ProfileStyle.profile_card_content}>
-              <p>Recommendations for protection</p>
-              <p>Make sure your account is secure.</p>
+              <h2 className={ProfileStyle.card_text}>
+                Recommendations for protection
+              </h2>
+              <div className={ProfileStyle.card_description}>
+                Make sure your account is secure.
+              </div>
             </div>
             <Link>Protect your account</Link>
           </div>

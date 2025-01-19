@@ -82,7 +82,61 @@
   line-height: 1.25rem;
 }
 
+.acc_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.acc_agreement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #ff9800;
+  border-radius: 12px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.icon {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.birthday_card {
+  border: 1px solid #ff9800;
+  border-radius: 12px;
+  background-color: transparent;
+  padding: 16px;
+  max-width: 400px;
+}
+
+.birthday_card_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  p {
+    font-size: 14px;
+    color: #fff;
+    margin: 0 0 8px 0;
+  }
+}
+
+.birthday_card_link {
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 .avatar_flex {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
 }
@@ -118,7 +172,7 @@
   font-size: 16px;
 
   &:hover {
-    background-color:  #fdab30;
+    background-color: #fdab30;
     transform: scale(1.02);
   }
 
