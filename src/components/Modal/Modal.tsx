@@ -2,8 +2,21 @@ import React, { useEffect } from "react";
 import ModalStyles from "../Modal/Modal.module.scss";
 import WatchTrailerBtn from "../WatchTrailerBtn/WatchTrailerBtn";
 
-const Modal = ({ onClose, movie }) => {
-  const handleEscape = (e) => {
+interface Movie {
+  title: string;
+  poster: string;
+  information: string;
+  director: string;
+  releaseDate: string;
+}
+
+interface ModalProps {
+  onClose: () => void;
+  movie: Movie;
+}
+
+const Modal: React.FC<ModalProps> = ({ onClose, movie }) => {
+  const handleEscape = (e: globalThis.KeyboardEvent) => {
     if (e.key === "Escape") {
       onClose();
     }

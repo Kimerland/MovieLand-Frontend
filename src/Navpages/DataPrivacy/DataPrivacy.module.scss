@@ -1,0 +1,32 @@
+.wrapper {
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #202020;
+  text-align: center;
+}
+
+.header {
+  width: calc(100% - 250px);
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.privacy_title {
+  line-height: 2.25rem;
+  font-size: 1.75rem;
+  letter-spacing: 0;
+  font-weight: 400;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+  color: var(--identity-common-ui-components-web-color-on-background);
+  margin: 0 0 8px;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+
+.privacy_text {
+  color: #444746;
+}

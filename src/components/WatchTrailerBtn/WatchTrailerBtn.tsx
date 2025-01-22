@@ -1,8 +1,11 @@
 import React from "react";
 import TrailerStyles from "../WatchTrailerBtn/WatchTrailerBtn.module.scss";
 
-const WatchTrailerBtn = ({ movie }) => {
-  
+interface Movie {
+  movie: any;
+}
+
+const WatchTrailerBtn: React.FC<Movie> = ({ movie }) => {
   const openTrailer = () => {
     window.open(movie.trailer);
   };

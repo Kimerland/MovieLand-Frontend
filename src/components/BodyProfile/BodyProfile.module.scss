@@ -5,45 +5,6 @@
   min-height: 100vh;
 }
 
-.nav_profile {
-  position: fixed;
-  top: 100;
-  left: 0;
-  width: 250px;
-  height: 100vh;
-  padding: 16px;
-}
-
-.nav_profile ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.nav_item {
-  font-family: "Roboto", sans-serif;
-  padding: 8px 12px;
-  margin: 8px 0;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.nav_icon {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.home_text {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-}
-
 .main_content_profile {
   padding-top: 20px;
   display: flex;
@@ -120,14 +81,14 @@
   padding: 8px 0 0;
 }
 
-.prof_icon {
-  position: absolute;
-  top: 40%;
-  left: 90%;
-  font-size: 16px;
-  // padding: 8px;
-  // display: flex;
-  display: block;
-  align-items: center;
-  justify-content: center;
+.card_link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #ff9800;
+  padding-top: 25px;
+}
+
+.profile_card_large {
+  flex: 2;
+  width: 37%;
 }

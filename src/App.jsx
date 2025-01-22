@@ -4,11 +4,11 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import ProfilePage from "./pages/ProfilePage";
 import WatchlistPage from "./pages/WatchlistPage";
-import PersonalInformation from "./Navpages/PersonalInformation";
-import DataPrivacy from "./Navpages/DataPrivacy";
-import Security from "./Navpages/Security";
-import AccessSettings from "./Navpages/AccessSettings";
-import Payments from "./Navpages/Payments";
+import PersonalInformation from "./Navpages/PersonalInformation/PersonalInformation";
+import DataPrivacy from "./Navpages/DataPrivacy/DataPrivacy";
+import Security from "./Navpages/Security/Security";
+import AccessSettings from "./Navpages/AccessSettings/AccessSettings";
+import Payments from "./Navpages/Payments/Payments";
 
 function App() {
   return (
