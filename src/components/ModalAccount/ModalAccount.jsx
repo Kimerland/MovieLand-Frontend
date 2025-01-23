@@ -8,17 +8,31 @@ import PublicIcon from "@mui/icons-material/Public";
 import { Link } from "react-router-dom";
 
 const ModalAccount = ({ onClose, avatar, setAvatar }) => {
-  const userId = "123456";
-
   const fileInputRef = useRef(null);
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const userId = JSON.parse(localStorage.getItem("currentUser")).CurrentUser
+    ?.id;
+
+  const handleClickChange = () => {
+    fileInputRef.current.click();
+  };
+
   const handleAvatarChange = async (event) => {
+    const file = event.target.files[0];
+    //Valid file size
+    if (file.size > 5 * 1024 * 1024) {
+      // 5MB
+      alert("Maximum size is 5MB");
+      return;
+    }
+
     const formData = new FormData();
-    formData.append("avatar", event.target.files[0]);
+    formData.append("avatar", file);
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/upload-avatar",
+        `http://localhost:5000/api/upload-avatar/${userId}`,
         formData,
         {
           headers: {
@@ -26,28 +40,46 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
           },
         }
       );
-      setAvatar(response.data.filePath);
+
+      // Update user in localStorage with new avatar
+      const updatedUser = { ...currentUser, avatar: response.data.avatar };
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+      setAvatar(response.data.avatar);
       onClose();
     } catch (error) {
-      console.log("Error", error);
+      console.error("Error uploading avatar:", error);
+      alert("Failed to upload avatar");
     }
   };
 
-  const handleAvatarDel = async () => {
+  const handleAvatarDel = async (id) => {
+    console.log(id);
+    
     try {
-      const userId = "id users";
-      await axios.delete(`http://localhost:5000/upload-avatar/${userId}`);
-      setAvatar("profile.png");
+      const response = await axios.delete(
+        `http://localhost:5000/api/avatar/${userId}`
+      );
+
+      // Update user in localStorage with default avatar
+      const updatedUser = { ...currentUser, avatar: response.data.avatar };
+      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
+
+      setAvatar(response.data.avatar);
       onClose();
     } catch (error) {
       console.error("Error deleting avatar:", error);
+      alert("Failed to delete avatar");
     }
   };
 
-  const handleClickChange = () => {
-    fileInputRef.current.click();
-  };
+  useEffect(() => {
+    if (currentUser?.avatar) {
+      setAvatar(currentUser.avatar);
+    }
+  }, [currentUser]);
 
+  //esc function
   const handleEscape = (e) => {
     if (e.key === "Escape") {
       onClose();
@@ -59,21 +91,6 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/user/${userId}`
-        );
-        setAvatar(response.data.avatar || "profile.png");
-      } catch (error) {
-        console.error("Error user data:", error);
-      }
-    };
-
-    fetchUser();
   }, []);
 
   return (
@@ -117,7 +134,7 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
 
             <div className={ModalAccStyles.avatar_flex}>
               <img
-                src={`http://localhost:5000${avatar}` || "profile.png"}
+                src={avatar ? `http://localhost:5000${avatar}` : "profile.png"}
                 className={ModalAccStyles.avatar_image}
               />
             </div>
@@ -132,7 +149,7 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
             </button>
             <button
               className={ModalAccStyles.account_btn}
-              onClick={handleAvatarDel}
+              onClick={() => handleAvatarDel(id)}
             >
               <DeleteOutlineIcon /> Delete
             </button>
