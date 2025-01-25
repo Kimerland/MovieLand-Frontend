@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../BodyMovies/BodyMovies.module.scss";
+import styles from "../../BodyMovies/BodyMovies.module.scss";
 
 const SortBtn = ({ filtredMovies, setFiltredMovies }) => {
   const [isAscending, setIsAscending] = useState(true);

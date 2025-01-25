@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ModalStyles from "../Modal/Modal.module.scss";
-import WatchTrailerBtn from "../WatchTrailerBtn/WatchTrailerBtn";
+import WatchTrailerBtn from "../Buttons/WatchTrailerBtn/WatchTrailerBtn";
 
 interface Movie {
   title: string;

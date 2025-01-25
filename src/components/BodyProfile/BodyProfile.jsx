@@ -1,9 +1,8 @@
 import React from "react";
 import ProfileStyle from "../BodyProfile/BodyProfile.module.scss";
 import { Link } from "react-router-dom";
-import SearchBtn from "../SearchBtn/SearchBtn";
+import SearchBtn from "../Buttons/SearchBtn/SearchBtn";
 import HeaderProfile from "../HeaderProfile/HeaderProfile";
-import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
 import NavProfile from "../NavProfile/NavProfile";
 
 const BodyProfile = () => {

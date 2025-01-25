@@ -6,7 +6,7 @@ import {
 } from "../redux/favourites/favourites.slice";
 import Header from "../components/Header/Header";
 import styles from "./../components/BodyMovies/BodyMovies.module.scss";
-import ViewDetails from "../components/ViewDetails/ViewDetails";
+import ViewDetails from "../components/Buttons/ViewDetails/ViewDetails";
 
 const WatchlistPage = () => {
   const favourites = useSelector((state) => state.favourites);

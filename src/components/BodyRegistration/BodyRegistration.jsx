@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./BodyRegistration.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const BodyRegistration = () => {
   const [email, setEmail] = useState("");
@@ -8,9 +9,7 @@ const BodyRegistration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const users = JSON.parse(localStorage.getItem("users")) || [];
-
-  const handleRegistration = (e) => {
+  const handleRegistration = async (e) => {
     e.preventDefault();
 
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,22 +19,32 @@ const BodyRegistration = () => {
     }
 
     if (password !== confirmPassword) {
-      alert("Mistake in pass!");
+      alert("Passwords do not match!");
       return;
     }
 
-    const userFind = users.some((user) => user.email === email);
+    try {
+      const response = await axios.post("http://localhost:5000/api/register", {
+        email,
+        password,
+      });
 
-    if (userFind) {
-      alert("We have this user!");
-      return;
+      if (response.status === 201) {
+        alert("Registration successful! Please login.");
+        navigate("/login");
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        alert(
+          error.response.data.message || "An error occurred. Please try again."
+        );
+      } else {
+        alert("An error occurred. Please try again.");
+      }
     }
-
-    users.push({ email, password });
-    localStorage.setItem("users", JSON.stringify(users));
-    alert("Complete! Now please login");
-
-    navigate("/");
   };
 
   return (
@@ -75,7 +84,7 @@ const BodyRegistration = () => {
         </button>
         <p href="" className={styles.userText}>
           Registered User?
-          <Link className={styles.registerText} to="/">
+          <Link className={styles.registerText} to="/login">
             Login here
           </Link>
         </p>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 interface User {
-  user?: object;
+  email: string;
 }
 
 interface HeaderProps {
@@ -14,21 +15,40 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const user = localStorage.getItem("currentUser");
-    if (user) {
-      try {
-        const parsedUser: User = JSON.parse(user);
-        setCurrentUser(parsedUser);
-      } catch (error) {
-        console.log("Invalid user data in LocalStorage", error);
+    const userData = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const server = await axios.get("http://localhost:5000/api/user", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setCurrentUser(server.data.user);
+        } catch (error) {
+          console.error("Undefined user", error);
+
+          localStorage.removeItem("token");
+        }
       }
-    }
+    };
+
+    userData();
   }, []);
+
+  //add handleLogOut for profile page
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    setCurrentUser(null);
+  };
 
   return (
     <header className={`${styles.header} ${isSticky ? styles.sticky : ""}`}>
       <div className={styles.wrapper}>
-        <p className={styles.title}>MovieLand</p>
+        <Link className={styles.title} to="/">
+          MovieLand
+        </Link>
         <div className={styles.rightSection}>
           <Link className={styles.films} to="/movies">
             All Films
@@ -44,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
             </div>
           ) : (
             <button className={styles.butLog}>
-              <Link className={styles.login} to="/">
+              <Link className={styles.login} to="/login">
                 Login
               </Link>
             </button>

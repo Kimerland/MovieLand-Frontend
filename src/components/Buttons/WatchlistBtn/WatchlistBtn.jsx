@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../BodyMovies/BodyMovies.module.scss";
+import styles from "../../BodyMovies/BodyMovies.module.scss";
 import { useDispatch } from "react-redux";
-import { addMovie } from "../../redux/favourites/favourites.slice";
+import { addMovie } from "../../../redux/favourites/favourites.slice";
 
 const WatchlistBtn = ({ movie }) => {
   const dispatch = useDispatch();

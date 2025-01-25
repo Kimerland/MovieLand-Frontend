@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import movies from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
-import SortBtn from "../SortBtn/SortBtn";
-import WatchlistBtn from "../WatchlistBtn/WatchlistBtn";
-import ViewDetails from "../ViewDetails/ViewDetails";
+import SortBtn from "../Buttons/SortBtn/SortBtn";
+import WatchlistBtn from "../Buttons/WatchlistBtn/WatchlistBtn";
+import ViewDetails from "../Buttons/ViewDetails/ViewDetails";
 
 const BodyMovies = () => {
   const [selectedGenre, setSelectedGenre] = useState("All");

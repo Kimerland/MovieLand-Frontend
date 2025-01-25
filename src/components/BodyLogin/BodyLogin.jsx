@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./BodyLogin.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const BodyLogin = () => {
   const [email, setEmail] = useState("");
@@ -8,38 +9,40 @@ const BodyLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser) {
-      navigate("/movies");
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/profile");
     }
   }, []);
 
-  const handleSearch = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const user = users.find((user) => user.email === email);
-
-    if (!user) {
-      alert("User is not registered");
-      return;
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        alert("Successful login!");
+        navigate("/profile");
+      } else {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      if (error.response) {
+        alert(error.response.data.message || "Error! Please try again.");
+      } else {
+        alert("Error! Please try again.");
+      }
     }
-
-    if (user.password !== password) {
-      alert("Invalid password");
-      return;
-    }
-
-    localStorage.setItem("currentUser", JSON.stringify(user));
-    alert("Successful login!");
-
-    navigate("/movies");
   };
 
   return (
     <main className={styles.main}>
-      <form className={styles.form} onSubmit={handleSearch}>
+      <form className={styles.form} onSubmit={handleLogin}>
         <p className={styles.title}>MovieLand</p>
 
         <label>

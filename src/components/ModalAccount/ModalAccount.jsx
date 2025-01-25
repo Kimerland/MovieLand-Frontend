@@ -9,10 +9,31 @@ import { Link } from "react-router-dom";
 
 const ModalAccount = ({ onClose, avatar, setAvatar }) => {
   const fileInputRef = useRef(null);
+  const [user, setUser] = useState(null);
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  const userId = JSON.parse(localStorage.getItem("currentUser")).CurrentUser
-    ?.id;
+  useEffect(() => {
+    const userData = async () => {
+      const token = localStorage.getItem("token");
+      if (token) {
+        try {
+          const server = await axios.get("http://localhost:5000/api/user", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUser(server.data.user);
+
+          if (server.data.user.avatar) {
+            setAvatar(server.data.user.avatar);
+          }
+        } catch (error) {
+          console.error("Undefined upload avatar", error);
+        }
+      }
+    };
+
+    userData();
+  }, [setAvatar]);
 
   const handleClickChange = () => {
     fileInputRef.current.click();
@@ -20,9 +41,7 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
 
   const handleAvatarChange = async (event) => {
     const file = event.target.files[0];
-    //Valid file size
     if (file.size > 5 * 1024 * 1024) {
-      // 5MB
       alert("Maximum size is 5MB");
       return;
     }
@@ -31,20 +50,17 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
     formData.append("avatar", file);
 
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:5000/api/upload-avatar/${userId}`,
+        `http://localhost:5000/api/upload-avatar`,
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-
-      // Update user in localStorage with new avatar
-      const updatedUser = { ...currentUser, avatar: response.data.avatar };
-      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-
       setAvatar(response.data.avatar);
       onClose();
     } catch (error) {
@@ -52,32 +68,6 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
       alert("Failed to upload avatar");
     }
   };
-
-  const handleAvatarDel = async (id) => {
-    console.log(id);
-    
-    try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/avatar/${userId}`
-      );
-
-      // Update user in localStorage with default avatar
-      const updatedUser = { ...currentUser, avatar: response.data.avatar };
-      localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-
-      setAvatar(response.data.avatar);
-      onClose();
-    } catch (error) {
-      console.error("Error deleting avatar:", error);
-      alert("Failed to delete avatar");
-    }
-  };
-
-  useEffect(() => {
-    if (currentUser?.avatar) {
-      setAvatar(currentUser.avatar);
-    }
-  }, [currentUser]);
 
   //esc function
   const handleEscape = (e) => {
@@ -91,7 +81,28 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
+  }, [handleEscape]);
+
+  const handleAvatarDel = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(`http://localhost:5000/api/avatar`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setAvatar(response.data.avatar);
+      onClose();
+    } catch (error) {
+      console.error("Error deleting avatar:", error);
+      alert("Failed to delete avatar");
+    }
+  };
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <>
@@ -149,7 +160,7 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
             </button>
             <button
               className={ModalAccStyles.account_btn}
-              onClick={() => handleAvatarDel(id)}
+              onClick={() => handleAvatarDel()}
             >
               <DeleteOutlineIcon /> Delete
             </button>

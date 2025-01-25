@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchStyle from "../SearchBtn/SearchBtn.module.scss";
-import searchData from "../BodyProfile/dataSearch";
+import searchData from "../../BodyProfile/dataSearch";
 import { Link } from "react-router-dom";
 
 const SearchBtn = () => {

@@ -9,12 +9,15 @@ import DataPrivacy from "./Navpages/DataPrivacy/DataPrivacy";
 import Security from "./Navpages/Security/Security";
 import AccessSettings from "./Navpages/AccessSettings/AccessSettings";
 import Payments from "./Navpages/Payments/Payments";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={<HomePage />} />
+
+        <Route path="/login" element={<LoginPage />} />
 
         <Route path="/registration" element={<RegistrationPage />} />
 
