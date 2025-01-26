@@ -21,7 +21,7 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
               Authorization: `Bearer ${token}`,
             },
           });
-          setUser(server.data.user);
+          setUser(server.data.user);  
 
           if (server.data.user.avatar) {
             setAvatar(server.data.user.avatar);

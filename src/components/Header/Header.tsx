@@ -50,24 +50,37 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
           MovieLand
         </Link>
         <div className={styles.rightSection}>
-          <Link className={styles.films} to="/movies">
-            All Films
-          </Link>
           {currentUser ? (
-            <div className={styles.header_container}>
-              <Link className={styles.link_style} to="/watchlist">
-                <p className={styles.watchlist_profile}>MY Watchlists</p>
+            <>
+              <Link className={styles.films} to="/movies">
+                All Films
               </Link>
-              <Link to="/profile">
-                <img className={styles.profile} src="/profile.png" />
-              </Link>
-            </div>
+
+              <div className={styles.header_container}>
+                <Link className={styles.link_style} to="/watchlist">
+                  <p className={styles.watchlist_profile}>MY Watchlists</p>
+                </Link>
+
+                <Link to="/profile">
+                  <img className={styles.profile} src="/profile.png" />
+                </Link>
+              </div>
+            </>
           ) : (
-            <button className={styles.butLog}>
-              <Link className={styles.login} to="/login">
-                Login
-              </Link>
-            </button>
+            <>
+              <button className={styles.butLog}>
+                <Link className={styles.login} to="/login">
+                  Login
+                </Link>
+              </button>
+
+              {/* add custom styles for join btn */}
+              <button className={styles.butLog}>
+                <Link className={styles.login} to="/registration">
+                  JOIN
+                </Link>
+              </button>
+            </>
           )}
         </div>
       </div>

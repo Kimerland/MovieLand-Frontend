@@ -1,27 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import styles from "./BodyLogin.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+interface LoginRespons {
+  token: string;
+  message: string;
+}
+
 const BodyLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setpassword] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token: string | null = localStorage.getItem("token");
     if (token) {
       navigate("/profile");
     }
   }, []);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email,
-        password,
-      });
+      const response = await axios.post<LoginRespons>(
+        "http://localhost:5000/api/login",
+        {
+          email,
+          password,
+        }
+      );
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
@@ -30,7 +40,7 @@ const BodyLogin = () => {
       } else {
         alert(response.data.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error:", error);
       if (error.response) {
         alert(error.response.data.message || "Error! Please try again.");
@@ -66,7 +76,7 @@ const BodyLogin = () => {
         <button className={styles.butLog} type="submit">
           <p className={styles.login}>Login</p>
         </button>
-        <p href="" className={styles.userText}>
+        <p className={styles.userText}>
           New User?{" "}
           <Link className={styles.registerText} to="/registration">
             Register here

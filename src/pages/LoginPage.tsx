@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../components/Header/Header";
-import BodyLogin from "../components/BodyLogin/BodyLogin";
+import BodyLogin from "../components/BodyLogin/BodyLogin.js"
+
 const LoginPage = () => {
   return (
     <>
-      <Header />
-      <BodyLogin />
+      <Header isSticky={false} />
+      <BodyLogin/>
     </>
   );
 };
