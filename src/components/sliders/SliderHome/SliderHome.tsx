@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import StyleSlider from "../SliderHome/SliderHome.module.scss";
 import { Link } from "react-router-dom";
+import HomeContent from "../../HomeContent/HomeContent";
 
 type Image = string;
 
 const SliderHome = () => {
   const [images, SetImages] = useState<Image[]>([]);
+  const [index, setIndex] = useState(0);
 
   const fetchPhotos = async (): Promise<void> => {
     try {
@@ -21,25 +23,41 @@ const SliderHome = () => {
     fetchPhotos();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) =>
+        images.length > 0 ? (prevIndex + 1) % images.length : 0
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images]);
+
   return (
     <div className={StyleSlider.start_header}>
-      <p className={StyleSlider.start_title}>Discover Movies</p>
-      <p className={StyleSlider.start_text}>
-        Explore the latest and greatest films.
-      </p>
-      <button className={StyleSlider.start_btn}>
-        <Link className={StyleSlider.start_btn_text} to="/registration">
-          Get Started
-        </Link>
-      </button>
-      <div className={StyleSlider.image_icons}>
+      {/* Background container */}
+      <div className={StyleSlider.background_div}>
         {images.map((image: Image, id: number) => (
           <img
             key={id}
             src={`http://localhost:5000/api/photos/${image}`}
-            className={StyleSlider.start_pictures}
+            className={`${StyleSlider.background_image} ${
+              id === index ? StyleSlider.active : ""
+            }`}
           />
         ))}
+      </div>
+      {/* Next content */}
+      <div className={StyleSlider.start_content}>
+        <p className={StyleSlider.start_title}>Discover Movies</p>
+        <p className={StyleSlider.start_text}>
+          Explore the latest and greatest films.
+        </p>
+        <button className={StyleSlider.start_btn}>
+          <Link className={StyleSlider.start_btn_text} to="/registration">
+            Get Started
+          </Link>
+        </button>
       </div>
     </div>
   );
