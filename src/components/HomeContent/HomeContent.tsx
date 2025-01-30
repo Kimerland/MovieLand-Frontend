@@ -10,11 +10,11 @@ const HomeContent = () => {
 
   useEffect(() => {
     fetchPhotos();
-  });
+  }, []);
 
   const fetchPhotos = async (): Promise<void> => {
     try {
-      const response = await fetch("http://localhost:5000/api/photos");
+      const response = await fetch(`http://localhost:5000/api/images`);
       const photos: string[] = await response.json();
       setPicture(photos);
     } catch (error) {
@@ -28,11 +28,11 @@ const HomeContent = () => {
         {/* Picture for style */}
         <div className={StyleContent.background_div}>
           <img
-            src="http://localhost:5000/images/people.jpg"
-            alt="Background"
+            src={`http://localhost:5000/api/images/people.jpg`}
             className={StyleContent.background_image}
           />
         </div>
+
         <h2 className={StyleContent.home_h2}>Discover the Magic of Cinema</h2>
         <p className={StyleContent.home_block_text}>
           Step into the world of storytelling, where every frame tells a tale.
@@ -45,6 +45,30 @@ const HomeContent = () => {
             JOIN
           </Link>
         </button>
+      </div>
+      <div className={StyleContent.information_block}>
+        <div className={StyleContent.top_block}>
+          <img
+            src={`http://localhost:5000/api/images/watching.png`}
+            className={StyleContent.background_image}
+          />
+        </div>
+
+        <div className={StyleContent.bottom_block}>
+          <img
+            src={`http://localhost:5000/api/images/1984-Movies.jpg`}
+            className={StyleContent.background_image}
+          />
+        </div>
+      </div>
+
+      <div className={StyleContent.text_align_center}>
+        <p className={StyleContent.our_text}>
+          Why you should use only MovieLand?
+        </p>
+        <p className={StyleContent.beyond_text}>
+          From watcher to expert and beyond...
+        </p>
       </div>
     </div>
   );

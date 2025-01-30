@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
-import styles from "../../BodyMovies/BodyMovies.module.scss";
+import styles from "../ViewDetails/ViewDetails.module.scss";
 import Modal from "../../Modal/Modal";
 
-const ViewDetails = ({ movie }) => {
+interface MovieType {
+  title: string;
+  poster: string;
+  information: string;
+  director: string;
+  releaseDate: string;
+}
+
+interface MovieProps {
+  onClose: () => void;
+  movie: MovieType;
+}
+
+const ViewDetails: React.FC<MovieProps> = ({ movie }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (

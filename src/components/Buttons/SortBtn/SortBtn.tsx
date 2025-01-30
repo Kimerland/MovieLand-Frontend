@@ -1,7 +1,22 @@
 import React, { useState } from "react";
 import styles from "../../BodyMovies/BodyMovies.module.scss";
 
-const SortBtn = ({ filtredMovies, setFiltredMovies }) => {
+interface MovieType {
+  id: number;
+  title: string;
+  movie: [];
+  rating: number;
+}
+
+interface FileredProps {
+  filtredMovies: MovieType[];
+  setFiltredMovies: React.Dispatch<React.SetStateAction<MovieType[]>>;
+}
+
+const SortBtn: React.FC<FileredProps> = ({
+  filtredMovies,
+  setFiltredMovies,
+}) => {
   const [isAscending, setIsAscending] = useState(true);
 
   const handleSort = () => {
