@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import SearchStyle from "../SearchBtn/SearchBtn.module.scss";
-import searchData from "../../BodyProfile/dataSearch";
+import searchData, { Searching } from "../../BodyProfile/dataSearch";
 import { Link } from "react-router-dom";
 
-const SearchBtn = () => {
-  const [query, setQuery] = useState("");
-  const [result, setResult] = useState([]);
+const SearchBtn: React.FC = () => {
+  const [query, setQuery] = useState<string>("");
+  const [result, setResult] = useState<Searching[]>([]);
 
-  const handleClick = (e) => {
+  const handleClick = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
     findFilter(value);
   };
 
-  const findFilter = (query) => {
+  const findFilter = (query: string) => {
     if (!query) {
       setResult([]);
       return;
@@ -36,7 +36,7 @@ const SearchBtn = () => {
         placeholder="Search in account"
       />
       {result.length > 0 && (
-        <div className={SearchStyle.search_results} key={result.id}>
+        <div className={SearchStyle.search_results}>
           {result.map((result) => (
             <Link
               key={result.id}

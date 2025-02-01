@@ -1,0 +1,36 @@
+.container_large {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.card_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.card,
+.review_card {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bottom_card {
+  grid-column: span 3;
+  display: flex;
+  gap: 20px;
+}
+
+.bottom_card .card {
+  flex: 1;
+  padding: 30px;
+  font-size: 1.1rem;
+}

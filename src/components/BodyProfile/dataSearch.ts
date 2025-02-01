@@ -1,4 +1,11 @@
-const searchData = [
+export interface Searching {
+  id: number;
+  category: string;
+  title: string;
+  link: string;
+}
+
+const searchData: Searching[] = [
   {
     id: 1,
     category: "Security",
