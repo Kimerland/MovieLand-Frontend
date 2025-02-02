@@ -5,7 +5,7 @@ import BodyRegistration from "../components/BodyRegistration/BodyRegistration";
 const RegistrationPage = () => {
   return (
     <>
-      <Header />
+      <Header isSticky={false} />
       <BodyRegistration />
     </>
   );

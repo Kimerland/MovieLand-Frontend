@@ -1,3 +1,16 @@
+export interface MoviesData {
+  id: number;
+  title: string;
+  genre: string;
+  rating: number;
+  description: string;
+  poster: string;
+  releaseDate: string;
+  director: string;
+  information: string;
+  trailer: string;
+}
+
 const movies = [
   {
     id: Math.random(),

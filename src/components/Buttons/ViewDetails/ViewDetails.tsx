@@ -2,18 +2,11 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "../ViewDetails/ViewDetails.module.scss";
 import Modal from "../../Modal/Modal";
-
-interface MovieType {
-  title: string;
-  poster: string;
-  information: string;
-  director: string;
-  releaseDate: string;
-}
+import { MoviesData } from "../../BodyMovies/dataMovies";
 
 interface MovieProps {
-  onClose: () => void;
-  movie: MovieType;
+  onClose?: () => void;
+  movie: MoviesData;
 }
 
 const ViewDetails: React.FC<MovieProps> = ({ movie }) => {

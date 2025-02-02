@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import movies from "./dataMovies";
+import movies, { MoviesData } from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
 import SortBtn from "../Buttons/SortBtn/SortBtn";
 import WatchlistBtn from "../Buttons/WatchlistBtn/WatchlistBtn";
 import ViewDetails from "../Buttons/ViewDetails/ViewDetails";
 
-const BodyMovies = () => {
-  const [selectedGenre, setSelectedGenre] = useState("All");
-  const [filtredMovies, setFiltredMovies] = useState([]);
+const BodyMovies: React.FC = () => {
+  const [selectedGenre, setSelectedGenre] = useState<string>("All");
+  const [filtredMovies, setFiltredMovies] = useState<MoviesData[]>([]);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleGenreChange = (genre) => {
+  const handleGenreChange = (genre: string) => {
     setSelectedGenre(genre);
     setIsDropdownOpen(false);
   };

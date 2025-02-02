@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./BodyRegistration.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AxiosError } from "axios";
 
 const BodyRegistration = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ const BodyRegistration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleRegistration = async (e) => {
+  const handleRegistration = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,11 +36,12 @@ const BodyRegistration = () => {
       } else {
         alert(response.data.message);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      if (error.response) {
+    } catch (error: unknown) {
+      const err = error as AxiosError<{ message?: string }>;
+
+      if (err.response) {
         alert(
-          error.response.data.message || "An error occurred. Please try again."
+          err.response.data.message || "An error occurred. Please try again."
         );
       } else {
         alert("An error occurred. Please try again.");
@@ -82,7 +84,7 @@ const BodyRegistration = () => {
         <button className={styles.butLog} type="submit">
           <p className={styles.login}>Signup</p>
         </button>
-        <p href="" className={styles.userText}>
+        <p className={styles.userText}>
           Registered User?
           <Link className={styles.registerText} to="/login">
             Login here

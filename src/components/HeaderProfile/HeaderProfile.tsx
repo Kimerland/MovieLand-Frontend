@@ -3,9 +3,9 @@ import HeaderStyle from "../HeaderProfile/HeaderProfile.module.scss";
 import { createPortal } from "react-dom";
 import ModalAccount from "../ModalAccount/ModalAccount";
 
-const HeaderProfile = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [avatar, setAvatar] = useState("profile.png");
+const HeaderProfile: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [avatar, setAvatar] = useState<string>("profile.png");
 
   return (
     <header className={HeaderStyle.profile_header}>

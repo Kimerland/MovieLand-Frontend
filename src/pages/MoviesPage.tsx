@@ -5,7 +5,7 @@ import BodyMovies from "../components/BodyMovies/BodyMovies";
 const MoviesPage = () => {
   return (
     <>
-      <Header />
+      <Header isSticky={false} />
       <BodyMovies />
     </>
   );

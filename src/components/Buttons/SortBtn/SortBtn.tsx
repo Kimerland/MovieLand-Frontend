@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import styles from "../../BodyMovies/BodyMovies.module.scss";
-
-interface MovieType {
-  id: number;
-  title: string;
-  movie: [];
-  rating: number;
-}
+import { MoviesData } from "../../BodyMovies/dataMovies";
 
 interface FileredProps {
-  filtredMovies: MovieType[];
-  setFiltredMovies: React.Dispatch<React.SetStateAction<MovieType[]>>;
+  filtredMovies: MoviesData[];
+  setFiltredMovies: React.Dispatch<React.SetStateAction<MoviesData[]>>;
 }
 
 const SortBtn: React.FC<FileredProps> = ({

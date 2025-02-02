@@ -7,9 +7,19 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import PublicIcon from "@mui/icons-material/Public";
 import { Link } from "react-router-dom";
 
-const ModalAccount = ({ onClose, avatar, setAvatar }) => {
-  const fileInputRef = useRef(null);
-  const [user, setUser] = useState(null);
+export interface ModalAccountProps {
+  onClose: () => void;
+  avatar: string | null;
+  setAvatar: (avatar: string) => void;
+}
+
+const ModalAccount: React.FC<ModalAccountProps> = ({
+  onClose,
+  avatar,
+  setAvatar,
+}) => {
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [user, setUser] = useState<{ avatar: string } | null>(null);
 
   useEffect(() => {
     const userData = async () => {
@@ -36,11 +46,14 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
   }, [setAvatar]);
 
   const handleClickChange = () => {
-    fileInputRef.current.click();
+    fileInputRef.current?.click();
   };
 
-  const handleAvatarChange = async (event) => {
-    const file = event.target.files[0];
+  const handleAvatarChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
     if (file.size > 5 * 1024 * 1024) {
       alert("Maximum size is 5MB");
       return;
@@ -70,7 +83,7 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
   };
 
   //esc function
-  const handleEscape = (e) => {
+  const handleEscape = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
       onClose();
     }
@@ -137,7 +150,10 @@ const ModalAccount = ({ onClose, avatar, setAvatar }) => {
                   Allow others to see your birthday in your profile so they can
                   know about your upcoming celebration.
                 </p>
-                <Link className={ModalAccStyles.birthday_card_link}>
+                <Link
+                  to="/security"
+                  className={ModalAccStyles.birthday_card_link}
+                >
                   Change settings
                 </Link>
               </div>
