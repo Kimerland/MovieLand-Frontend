@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StyleSlider from "../SliderHome/SliderHome.module.scss";
 import { Link } from "react-router-dom";
-import HomeContent from "../../HomeContent/HomeContent";
 
 type Image = string;
 
@@ -35,7 +34,6 @@ const SliderHome = () => {
 
   return (
     <div className={StyleSlider.start_header}>
-      {/* Background container */}
       <div className={StyleSlider.background_div}>
         {images.map((image: Image, id: number) => (
           <img
@@ -47,7 +45,6 @@ const SliderHome = () => {
           />
         ))}
       </div>
-      {/* Next content */}
       <div className={StyleSlider.start_content}>
         <p className={StyleSlider.start_title}>Discover Movies</p>
         <p className={StyleSlider.start_text}>

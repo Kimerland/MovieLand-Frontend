@@ -23,6 +23,11 @@
   margin: 0 auto;
 }
 
+.movie_logo {
+  display: flex;
+  gap: 8px;
+}
+
 .title {
   color: #ff9800;
   font-family: var(--third-family);

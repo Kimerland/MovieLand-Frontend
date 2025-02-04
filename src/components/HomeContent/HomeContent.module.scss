@@ -1,3 +1,32 @@
+.home_wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.grain_overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  opacity: 4;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+.home_page {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.home_page.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .home_main {
   position: relative;
   min-height: 100vh;

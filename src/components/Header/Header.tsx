@@ -46,9 +46,12 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
   return (
     <header className={`${styles.header} ${isSticky ? styles.sticky : ""}`}>
       <div className={styles.wrapper}>
-        <Link className={styles.title} to="/">
-          MovieLand
-        </Link>
+        <div className={styles.movie_logo}>
+          <img src={`http://localhost:5000/api/images/Logo.svg`} />
+          <Link className={styles.title} to="/">
+            MovieLand
+          </Link>
+        </div>
         <div className={styles.rightSection}>
           {currentUser ? (
             <>

@@ -1,30 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StyleContent from "../HomeContent/HomeContent.module.scss";
-import { useState } from "react";
 import HeaderSection from "./HeaderSection/HeaderSection";
 import InformationSection from "./InformationSection/InformationSection";
 import FeaturesSection from "./FeaturesSection/FeaturesSection";
 import LastSection from "./LastSection/LastSection";
 
-type Image = string;
-
 const HomeContent = () => {
-  const [picture, setPicture] = useState<Image[]>([]);
-
-  useEffect(() => {
-    fetchPhotos();
-  }, []);
-
-  const fetchPhotos = async (): Promise<void> => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/images`);
-      const photos: string[] = await response.json();
-      setPicture(photos);
-    } catch (error) {
-      console.error("Error photos:", error);
-    }
-  };
-
   return (
     <div className={StyleContent.home_main}>
       <HeaderSection />

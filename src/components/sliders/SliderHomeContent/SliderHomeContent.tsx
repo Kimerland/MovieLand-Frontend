@@ -1,7 +1,7 @@
 import React from "react";
 import StyleContent from "../SliderHomeContent/SliderHomeContent.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
@@ -31,12 +31,14 @@ const SliderHomeContent = () => {
   return (
     <div className={StyleContent.slider_container}>
       <Swiper
-        modules={[Pagination, Autoplay]}
+        modules={[EffectFade, Pagination, Autoplay]}
         spaceBetween={0}
         slidesPerView={1}
         loop={true}
+        grabCursor={false}
+        allowTouchMove={false}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000 }}
+        autoplay={{ delay: 7000 }}
         className={StyleContent.review_slider}
       >
         {reviews.map((reviews, index) => (
