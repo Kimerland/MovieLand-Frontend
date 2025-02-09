@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 
 interface User {
   email: string;
@@ -9,6 +10,10 @@ interface User {
 
 interface HeaderProps {
   isSticky: boolean;
+}
+
+export interface ProfileMenuProps {
+  setCurrentUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 const Header: React.FC<HeaderProps> = ({ isSticky }) => {
@@ -36,13 +41,6 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
     userData();
   }, []);
 
-  //add handleLogOut for profile page
-
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    setCurrentUser(null);
-  };
-
   return (
     <header className={`${styles.header} ${isSticky ? styles.sticky : ""}`}>
       <div className={styles.wrapper}>
@@ -64,9 +62,7 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
                   <p className={styles.watchlist_profile}>MY Watchlists</p>
                 </Link>
 
-                <Link to="/profile">
-                  <img className={styles.profile} src="/profile.png" />
-                </Link>
+                <ProfileMenu setCurrentUser={setCurrentUser} />
               </div>
             </>
           ) : (

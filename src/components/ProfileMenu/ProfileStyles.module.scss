@@ -1,0 +1,105 @@
+.profile {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profileContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+.nav_menu {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  width: 300px;
+  background: #181818;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.nav_avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-left: 200px;
+  padding-top: 20px;
+}
+
+.btn_logout {
+  display: block;
+  padding: 12px 15px;
+  color: #f5f5f5;
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.btn_logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.02);
+}
+
+.btn_logout:active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0.98);
+}
+
+.nav_menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav_menu ul a {
+  display: block;
+  padding: 12px 15px;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav_menu ul a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.02);
+}
+
+.nav_menu ul a:active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0.98);
+}
+
+.nav_menu hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 10px 0;
+}
+
+.email_text {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  text-transform: none;
+}

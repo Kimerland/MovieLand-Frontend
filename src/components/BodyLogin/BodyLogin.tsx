@@ -16,7 +16,7 @@ const BodyLogin = () => {
   useEffect(() => {
     const token: string | null = localStorage.getItem("token");
     if (token) {
-      navigate("/profile");
+      navigate("/movies");
     }
   }, []);
 
@@ -36,7 +36,7 @@ const BodyLogin = () => {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         alert("Successful login!");
-        navigate("/profile");
+        navigate("/movies");
       } else {
         alert(response.data.message);
       }
