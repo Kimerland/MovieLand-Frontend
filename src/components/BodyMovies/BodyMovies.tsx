@@ -30,15 +30,24 @@ const BodyMovies: React.FC = () => {
       <p className={styles.all_films}>All Films ({movies.length})</p>
       <div className={styles.filter_container}>
         <div className={styles.filter_wrapper}>
-          <button className={styles.filter_btn}>
+          <button
+            className={styles.filter_btn}
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
             Genre
             <img
               src="arrow_drop_down.svg"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className={styles.arrow_icon}
+              className={`${styles.arrow_icon} ${
+                isDropdownOpen ? styles.rotate : ""
+              }`}
             />
             {isDropdownOpen && (
-              <ul className={styles.dropdown_menu}>
+              <ul
+                className={`${styles.dropdown_menu} ${
+                  isDropdownOpen ? styles.open : ""
+                }`}
+              >
                 <li onClick={() => handleGenreChange("All")}>All</li>
                 <li onClick={() => handleGenreChange("Action")}>Action</li>
                 <li onClick={() => handleGenreChange("Golden Globe Winner")}>

@@ -1,34 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./BodyRegistration.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AxiosError } from "axios";
+import { registrationSchema, RegistrationSchemaType } from "../../../schemas";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const BodyRegistration = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegistrationSchemaType>({
+    resolver: zodResolver(registrationSchema),
+  });
+
   const navigate = useNavigate();
 
-  const handleRegistration = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailCheck.test(email)) {
-      alert("Invalid email!");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
+  const handleRegistration = async (data: RegistrationSchemaType) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/register", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/register",
+        data
+      );
 
       if (response.status === 201) {
         alert("Registration successful! Please login.");
@@ -38,47 +33,47 @@ const BodyRegistration = () => {
       }
     } catch (error: unknown) {
       const err = error as AxiosError<{ message?: string }>;
-
-      if (err.response) {
-        alert(
-          err.response.data.message || "An error occurred. Please try again."
-        );
-      } else {
-        alert("An error occurred. Please try again.");
-      }
+      alert(
+        err.response?.data.message || "An error occurred. Please try again."
+      );
     }
   };
 
   return (
     <main className={styles.main}>
-      <form className={styles.form} onSubmit={handleRegistration}>
+      <form className={styles.form} onSubmit={handleSubmit(handleRegistration)}>
         <p className={styles.title}>MovieLand</p>
 
         <label>
+          <p className={styles.email}>Username</p>
+          <input type="text" {...register("username")} />
+          {errors.username && (
+            <span className={styles.error}>{errors.username.message}</span>
+          )}
+        </label>
+
+        <label>
           <p className={styles.email}>Email</p>
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <input {...register("email")} type="email" />
+          {errors.email && (
+            <p className={styles.error}>{errors.email.message}</p>
+          )}
         </label>
 
         <label>
           <p className={styles.password}>Password</p>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <input {...register("password")} type="password" />
+          {errors.password && (
+            <p className={styles.error}>{errors.password.message}</p>
+          )}
         </label>
 
         <label>
           <p className={styles.password}>Confirm Password</p>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+          <input {...register("password")} type="password" />
+          {errors.password && (
+            <p className={styles.error}>{errors.password.message}</p>
+          )}
         </label>
 
         <button className={styles.butLog} type="submit">

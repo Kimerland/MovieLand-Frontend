@@ -48,7 +48,6 @@
   text-transform: uppercase;
   text-align: center;
   color: #fff;
-
   display: flex;
   gap: 8px;
   position: relative;
@@ -58,22 +57,36 @@
 
 .arrow_icon {
   width: 16px;
+  transition: transform 0.3s ease;
 }
 
-// I need to fix styles dropdown_menu from 1/2/25
-
 .dropdown_menu {
-  position: absolute;
   list-style: none;
-  background-color: #202020;
-  border: 1px solid #ff9800;
+  position: absolute;
   top: 110%;
-  right: 110%;
+  left: 0;
   width: 100%;
+  background: #181818;
+  border: 1px solid #fff;
   border-radius: 10px;
   padding: 8px 0;
-  margin: 0;
+  margin: 5px 0;
   z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown_menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.arrow_icon.rotate {
+  transform: rotate(180deg);
 }
 
 .raiting_btn {

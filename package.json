@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@hookform/resolvers": "^4.0.0",
     "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
     "@reduxjs/toolkit": "^2.5.0",
@@ -19,10 +20,12 @@
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.2",
     "react-parallax": "^3.5.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
-    "swiper": "^11.2.2"
+    "swiper": "^11.2.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
