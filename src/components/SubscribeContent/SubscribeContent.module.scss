@@ -1,0 +1,60 @@
+.main_subscriptions {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  text-align: center;
+  padding-top: 30px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+.subscription_card {
+  min-height: auto;
+  border-radius: 12px;
+  padding: 15px;
+  width: 350px;
+  text-align: center;
+  color: white;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.6);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(255, 152, 0, 0.8);
+  }
+}
+
+.background_image {
+  width: 100%;
+}
+
+.price {
+  padding-bottom: 10px;
+}
+
+.description {
+  padding-bottom: 10px;
+}
+
+.subscribe_btn {
+  color: #fff;
+  border-radius: 36px;
+  width: 137px;
+  background: linear-gradient(45deg, #ff9800, #ff5722);
+  border: none;
+  font-size: 14px;
+  line-height: 257%;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(45deg, #ff5722, #ff9800);
+    transform: scale(1.05);
+    filter: blur(0.2px);
+  }
+}

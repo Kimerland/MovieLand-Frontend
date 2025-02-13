@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import WatchlistPage from "./pages/WatchlistPage";
 import HomePage from "./pages/HomePage";
+import SubscribePage from "./pages/SubscribePage";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route path="/movies" element={<MoviesPage />} />
 
         <Route path="/watchlist" element={<WatchlistPage />} />
+
+        <Route path="/subscribe" element={<SubscribePage />} />
       </Routes>
     </>
   );

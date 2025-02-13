@@ -3,21 +3,22 @@ import ProfileStyles from ".//ProfileStyles.module.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { ProfileMenuProps } from "../Header/Header";
+import LogOutBtn from "../Buttons/LogOutBtn/LogOutBtn";
 
 const ProfileMenu: FC<ProfileMenuProps> = ({ setCurrentUser }) => {
   const [initialState, setInitialState] = useState<boolean>(false);
-  const [user, setUser] = useState<{ email: string; avatarUrl: string }>({
+  const [user, setUser] = useState<{
+    username: string;
+    email: string;
+    avatarUrl: string;
+  }>({
+    username: "",
     email: "",
     avatarUrl: "",
   });
 
   const toogleMenu = () => {
     setInitialState((prev) => !prev);
-  };
-
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    setCurrentUser(null);
   };
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ setCurrentUser }) => {
               Authorization: `Bearer ${token}`,
             },
           });
+          console.log("User data:", server.data.user);
           setUser(server.data.user);
         } catch (error) {
           console.error("Undefined user", error);
@@ -53,6 +55,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ setCurrentUser }) => {
               className={`${ProfileStyles.profile} ${ProfileStyles.nav_avatar}`}
               src={user.avatarUrl || "/profile.png"}
             />
+            <p className={ProfileStyles.user_text}>{user.username}</p>
             <p className={ProfileStyles.email_text}>{user.email}</p>
             <hr />
             <Link to="/subscribe">Subscribe</Link>
@@ -61,9 +64,7 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ setCurrentUser }) => {
             <Link to="/settings">Settings</Link>
             <Link to="/support">Support</Link>
             <hr />
-            <button className={ProfileStyles.btn_logout} onClick={handleLogOut}>
-              Log out
-            </button>
+            <LogOutBtn setCurrentUser={setCurrentUser} />
           </ul>
         </div>
       ) : (

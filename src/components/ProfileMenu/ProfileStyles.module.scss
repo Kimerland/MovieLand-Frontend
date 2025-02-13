@@ -18,6 +18,7 @@
 }
 
 .nav_menu {
+  z-index: 1;
   position: absolute;
   top: -25px;
   right: 0;
@@ -28,46 +29,26 @@
   padding: 15px;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .nav_avatar {
-  position: relative;
   display: flex;
   justify-content: center;
-  text-align: center;
-  margin-left: 200px;
+  align-items: center;
+  margin-left: 90px;
   padding-top: 20px;
-}
-
-.btn_logout {
-  display: block;
-  padding: 12px 15px;
-  color: #f5f5f5;
-  background: none;
-  border: none;
-  text-decoration: none;
-  font-size: 14px;
-  border-radius: 8px;
-  transition: background 0.3s ease, color 0.3s ease;
-  cursor: pointer;
-  text-align: left;
-}
-
-.btn_logout:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  transform: scale(1.02);
-}
-
-.btn_logout:active {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(0.98);
 }
 
 .nav_menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .nav_menu ul a {
@@ -101,5 +82,11 @@
 .email_text {
   color: rgba(255, 255, 255, 0.4);
   font-size: 14px;
+  text-transform: none;
+}
+
+.user_text {
+  color: rgba(255, 255, 255, 0.938);
+  font-size: 26px;
   text-transform: none;
 }

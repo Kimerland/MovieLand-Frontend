@@ -18,6 +18,12 @@ const LastSection = () => {
             className={StyleContent.background_image}
           />
           <div className={StyleContent.content}>
+            <div className={StyleContent.emoji_wrapper}>
+              <img
+                src={`http://localhost:5000/api/images/Emoji_1.png`}
+                className={StyleContent.emoji_style}
+              />
+            </div>
             <h2 className={StyleContent.title}>
               How many films did you watched in 2024?
             </h2>

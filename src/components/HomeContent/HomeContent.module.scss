@@ -17,6 +17,7 @@
 }
 
 .home_page {
+  min-height: 100%;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
