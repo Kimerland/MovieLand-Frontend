@@ -5,6 +5,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import WatchlistPage from "./pages/WatchlistPage";
 import HomePage from "./pages/HomePage";
 import SubscribePage from "./pages/SubscribePage";
+import MessagesPage from "./pages/MessagesPage";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/watchlist" element={<WatchlistPage />} />
 
         <Route path="/subscribe" element={<SubscribePage />} />
+
+        <Route path="/messages" element={<MessagesPage />} />
       </Routes>
     </>
   );

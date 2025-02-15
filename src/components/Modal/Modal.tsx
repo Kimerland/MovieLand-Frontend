@@ -9,8 +9,7 @@ interface Movie {
   director: string;
   releaseDate: string;
 }
-
-interface ModalProps {
+export interface ModalProps {
   onClose: () => void;
   movie: Movie;
 }

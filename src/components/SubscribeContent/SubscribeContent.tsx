@@ -1,13 +1,16 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import SubscribeStyles from "../SubscribeContent/SubscribeContent.module.scss";
+import { createPortal } from "react-dom";
+import ModalSubscribe from "../../modal/ModalSubscribe/ModalSubscribe";
 
-interface SubscribeProps {
+export interface SubscribeProps {
   title: string;
   oldPrice: number;
   newPrice: number;
   description: string;
   buttonText: string;
   imgSrc: string;
+  onClose?: () => void;
 }
 
 const SubscribeContent: FC<SubscribeProps> = ({
@@ -18,6 +21,8 @@ const SubscribeContent: FC<SubscribeProps> = ({
   buttonText,
   imgSrc,
 }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className={SubscribeStyles.subscription_card}>
       <img
@@ -30,7 +35,22 @@ const SubscribeContent: FC<SubscribeProps> = ({
         <s>${oldPrice}</s> Now ${newPrice}/month
       </p>
       <p className={SubscribeStyles.description}>{description}</p>
-      <button className={SubscribeStyles.subscribe_btn}>{buttonText}</button>
+      <button
+        onClick={() => {
+          setShowModal(true);
+        }}
+        className={SubscribeStyles.subscribe_btn}
+      >
+        {buttonText}
+      </button>
+
+      {showModal &&
+        createPortal(
+          <>
+            <ModalSubscribe onClose={() => setShowModal(false)} />
+          </>,
+          document.body
+        )}
     </div>
   );
 };
