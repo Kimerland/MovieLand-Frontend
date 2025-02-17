@@ -6,6 +6,7 @@ import WatchlistPage from "./pages/WatchlistPage";
 import HomePage from "./pages/HomePage";
 import SubscribePage from "./pages/SubscribePage";
 import MessagesPage from "./pages/MessagesPage";
+import CinemaHub from "./pages/CinemaHub";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/movies" element={<MoviesPage />} />
 
         <Route path="/watchlist" element={<WatchlistPage />} />
+
+        <Route path="/cinema" element={<CinemaHub />} />
 
         <Route path="/subscribe" element={<SubscribePage />} />
 

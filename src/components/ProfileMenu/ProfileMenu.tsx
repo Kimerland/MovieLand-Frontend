@@ -58,11 +58,11 @@ const ProfileMenu: FC<ProfileMenuProps> = ({ setCurrentUser }) => {
             <p className={ProfileStyles.user_text}>{user.username}</p>
             <p className={ProfileStyles.email_text}>{user.email}</p>
             <hr />
+            <Link to="/cinema">Cinema Hub</Link>
             <Link to="/subscribe">Subscribe</Link>
-            <Link to="/messages">Messages</Link>
             <hr />
+            <Link to="/messages">Messages</Link>
             <Link to="/settings">Settings</Link>
-            <Link to="/support">Support</Link>
             <hr />
             <LogOutBtn setCurrentUser={setCurrentUser} />
           </ul>

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import ModalStyles from "../ModalSubscribe/ModalSubscribe.module.scss";
 
 export interface SubscribeProps {
@@ -6,6 +6,10 @@ export interface SubscribeProps {
 }
 
 const ModalSubscribe: FC<SubscribeProps> = ({ onClose }) => {
+  const [isSubscribed, setIsSubscribed] = useState(
+    Boolean(localStorage.getItem("subscription"))
+  );
+
   const handleEscape = (e: globalThis.KeyboardEvent) => {
     if (e.key === "Escape") {
       onClose();
@@ -18,12 +22,23 @@ const ModalSubscribe: FC<SubscribeProps> = ({ onClose }) => {
     }
   };
 
+  const buySubscribe = () => {
+    localStorage.setItem("subscription", "true");
+    setIsSubscribed(true);
+  };
+
   useEffect(() => {
     document.addEventListener("keydown", handleEscape);
     return () => {
       document.removeEventListener("keydown", handleEscape);
     };
   }, []);
+
+  if (!isSubscribed) {
+    setTimeout(() => {
+      onClose();
+    }, 10000);
+  }
 
   return (
     <div className={ModalStyles.modal_overlay} onClick={handleOverlayClick}>
@@ -33,7 +48,13 @@ const ModalSubscribe: FC<SubscribeProps> = ({ onClose }) => {
         </button>
         <h2>Subscribe Now</h2>
         <p>Unlock premium features with our subscription.</p>
-        <button className={ModalStyles.subscribe_btn}>Subscribe</button>
+        {isSubscribed ? (
+          <p>You are subscribed!</p>
+        ) : (
+          <button onClick={buySubscribe} className={ModalStyles.subscribe_btn}>
+            Subscribe
+          </button>
+        )}
       </div>
     </div>
   );

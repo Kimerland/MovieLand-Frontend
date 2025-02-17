@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import SubscribeStyles from "../SubscribeContent/SubscribeContent.module.scss";
 import { createPortal } from "react-dom";
-import ModalSubscribe from "../../modal/ModalSubscribe/ModalSubscribe";
+import ModalSubscribe from "../Modal/ModalSubscribe/ModalSubscribe";
 
 export interface SubscribeProps {
   title: string;
@@ -22,6 +22,7 @@ const SubscribeContent: FC<SubscribeProps> = ({
   imgSrc,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const isSubscribed = Boolean(localStorage.getItem("subscription"));
 
   return (
     <div className={SubscribeStyles.subscription_card}>
@@ -35,14 +36,15 @@ const SubscribeContent: FC<SubscribeProps> = ({
         <s>${oldPrice}</s> Now ${newPrice}/month
       </p>
       <p className={SubscribeStyles.description}>{description}</p>
-      <button
-        onClick={() => {
-          setShowModal(true);
-        }}
-        className={SubscribeStyles.subscribe_btn}
-      >
-        {buttonText}
-      </button>
+
+      {!isSubscribed && (
+        <button
+          className={SubscribeStyles.subscribe_btn}
+          onClick={() => setShowModal(true)}
+        >
+          {buttonText}
+        </button>
+      )}
 
       {showModal &&
         createPortal(

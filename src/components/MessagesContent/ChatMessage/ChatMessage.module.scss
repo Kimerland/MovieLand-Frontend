@@ -1,0 +1,58 @@
+.user_message {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.user_message .message_text {
+  background-color: #ff9800;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 18px 18px 0 18px;
+  max-width: 75%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+.bot_message {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.bot_message .bot_icon {
+  height: 30px;
+  width: 30px;
+  padding: 6px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.bot_message .message_text {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 18px 18px 18px 0;
+  max-width: 75%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+
+/* Анимация появления */
+.user_message .message_text,
+.bot_message .message_text {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

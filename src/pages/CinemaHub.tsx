@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
-import BodyLogin from "../components/BodyLogin/BodyLogin.js";
 import StyleContent from "../components/HomeContent/HomeContent.module.scss";
 
-const LoginPage = () => {
+const CinemaHub = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -11,6 +10,7 @@ const LoginPage = () => {
       setIsVisible(true);
     }, 100);
   }, []);
+
   return (
     <div className={StyleContent.home_wrapper}>
       <div className={StyleContent.grain_overlay}></div>
@@ -19,11 +19,11 @@ const LoginPage = () => {
           isVisible ? StyleContent.active : ""
         }`}
       >
-        <Header isSticky={false} />
-        <BodyLogin />
+        <Header isSticky={true} />
+        
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default CinemaHub;
