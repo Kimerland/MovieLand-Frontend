@@ -107,3 +107,29 @@
 .link_style {
   text-decoration: none;
 }
+
+@media (max-width: 485px) {
+  .butLog {
+    width: 58px;
+    height: 26px;
+  }
+  .login {
+    font-size: 10px;
+  }
+  .films {
+    font-size: 10px;
+  }
+  .watchlist_profile {
+    font-size: 10px;
+  }
+  .movie_logo {
+    width: 15px;
+    align-items: center;
+  }
+  .title {
+    font-size: 10px;
+  }
+  .header_container {
+    gap: 5px;
+  }
+}

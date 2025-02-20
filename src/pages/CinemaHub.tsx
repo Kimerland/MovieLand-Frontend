@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header/Header";
 import StyleContent from "../components/HomeContent/HomeContent.module.scss";
+import CinemaContent from "../components/CinemaContent/CinemaContent";
 
 const CinemaHub = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -20,7 +21,7 @@ const CinemaHub = () => {
         }`}
       >
         <Header isSticky={true} />
-        
+        <CinemaContent />
       </div>
     </div>
   );

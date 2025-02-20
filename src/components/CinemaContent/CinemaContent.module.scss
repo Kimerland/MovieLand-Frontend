@@ -1,0 +1,96 @@
+.wrapper_cinema {
+}
+
+.introduction_cinema {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Outfit", sans-serif;
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+.watch_text {
+  color: #ff9800;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.start_content {
+  background-color: #ff9800;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ffa928;
+    filter: blur(0.5px);
+    transform: scale(1.06);
+  }
+}
+
+.start_btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #202020;
+}
+
+a {
+  text-decoration: none;
+}
+
+.movies_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.movie_card {
+  max-width: 300px;
+  width: 100%;
+}
+
+.movie_poster {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+}
+
+.movie_title {
+  color: #9e9e9e;
+}
+
+.movie_year {
+  font-size: 14px;
+  color: #ffffffad;
+}
+
+.show_content {
+  padding: 30px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.show_more {
+  background-color: #ff9800;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
