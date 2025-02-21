@@ -9,6 +9,16 @@
   height: 100vh;
   width: 60%;
   overflow: hidden;
+
+  @media (max-width: 1900px) {
+    height: 80vh;
+  }
+}
+
+@media (max-width: 1250px) {
+  .information_block {
+    display: none;
+  }
 }
 
 .top_block {

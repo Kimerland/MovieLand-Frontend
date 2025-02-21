@@ -11,12 +11,7 @@
   font-family: "Outfit", sans-serif;
   animation: fade-in 1s ease-in-out forwards;
 
-  @media (max-width: 768px) {
-    height: 60vh;
-  }
-
-  @media (max-width: 480px) {
-    height: 50vh;
+  @media (max-width: 1020px) {
   }
 }
 
