@@ -7,6 +7,10 @@
   color: #fff;
   margin-bottom: 1.5rem;
   overflow: hidden;
+
+  @media (max-width: 850px) {
+    padding: 20px;
+  }
 }
 
 .blur_background {
@@ -23,6 +27,16 @@
   filter: blur(100px);
   transform: translate(-50%, -40%);
   z-index: 0;
+
+  @media (max-width: 850px) {
+    width: 200px;
+    height: 200px;
+  }
+
+  @media (max-width: 500px) {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .block_text_center {
@@ -47,6 +61,18 @@
   font-size: 2rem;
   font-family: "Outfit", sans-serif;
   font-weight: 400;
+
+  @media (max-width: 850px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 655px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 1rem;
+  }
 }
 
 .container_large {
@@ -69,6 +95,19 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
+  @media (max-width: 850px) {
+    height: 350px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 655px) {
+    height: 250px;
+  }
+
+  @media (max-width: 500px) {
+    height: 150px;
+  }
 }
 
 .background_image {
@@ -118,6 +157,14 @@
 
 .emoji_style {
   width: 200px;
+
+  @media (max-width: 850px) {
+    width: 80px;
+  }
+
+  @media (max-width: 655px) {
+    display: none;
+  }
 }
 
 .title {
@@ -125,6 +172,18 @@
   font-family: "Roboto Mono", monospace;
   font-weight: 700;
   margin: 0 0 0.5rem;
+
+  @media (max-width: 850px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 655px) {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 0.5rem;
+  }
 }
 
 .subtitle {
@@ -132,6 +191,18 @@
   line-height: 1.5;
   color: #ccc;
   margin-bottom: 1rem;
+
+  @media (max-width: 850px) {
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 655px) {
+    font-size: 0.7rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 0.5rem;
+  }
 }
 
 .author {
@@ -139,6 +210,18 @@
   align-items: center;
   gap: 0.75rem;
   justify-content: center;
+
+  @media (max-width: 850px) {
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 655px) {
+    gap: 0.3rem;
+  }
+
+  @media (max-width: 500px) {
+    gap: 0.1rem;
+  }
 }
 
 .avatar {
@@ -147,14 +230,45 @@
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #444;
+
+  @media (max-width: 850px) {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (max-width: 655px) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @media (max-width: 500px) {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .name {
   font-size: 0.875rem;
   font-weight: 600;
+
+  @media (max-width: 655px) {
+    font-size: 0.65rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 0.45rem;
+  }
 }
 
 .date {
   font-size: 0.75rem;
   color: #aaa;
+
+  @media (max-width: 655px) {
+    font-size: 0.55rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 0.35rem;
+  }
 }

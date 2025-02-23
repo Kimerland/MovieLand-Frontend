@@ -3,12 +3,14 @@ import CinemaStyles from "../CinemaContent/CinemaContent.module.scss";
 import { Link } from "react-router-dom";
 
 export interface ICinema {
+  id: string;
   imdbID: string;
   Poster: string;
   Title: string;
   Year: string;
   Plot: string;
-  imdbRating: string;
+  imdbRating: number;
+  Genre: string;
 }
 
 const CinemaContent = () => {

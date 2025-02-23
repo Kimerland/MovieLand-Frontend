@@ -5,12 +5,12 @@ import {
   removeMovie,
 } from "../../redux/favourites/favourites.slice";
 import styles from "../../components/BodyMovies/BodyMovies.module.scss";
-import { MoviesData } from "../BodyMovies/dataMovies";
 import WatchTrailerBtn from "../Buttons/WatchTrailerBtn/WatchTrailerBtn";
+import { ICinema } from "../CinemaContent/CinemaContent";
 
 export interface IWatch {
   state?: () => void;
-  favourites: MoviesData[];
+  favourites: ICinema[];
 }
 
 const WatchlistContent = () => {
@@ -19,19 +19,16 @@ const WatchlistContent = () => {
 
   const dispatch = useDispatch();
 
-  const handleRemove = (id: number) => {
+  const handleRemove = (id: string) => {
     dispatch(removeMovie(id));
   };
 
   useEffect(() => {
-    if (favourites.length === 0) {
-      const watchList: MoviesData[] = JSON.parse(
-        localStorage.getItem("watchusers") || "[]"
-      );
-      if (watchList.length > 0) {
-        console.log("Loaded from localStorage:", watchList);
-        dispatch(initialWatch(watchList));
-      }
+    const watchList: ICinema[] = JSON.parse(
+      localStorage.getItem("watchusers") || "[]"
+    );
+    if (watchList.length > 0) {
+      dispatch(initialWatch(watchList));
     }
   }, [dispatch]);
 
@@ -49,19 +46,19 @@ const WatchlistContent = () => {
         <ul>
           {favourites.map((movie) => (
             <div key={movie.id} className={styles.card}>
-              <img src={movie.poster} className={styles.images} />
+              <img src={movie.Poster} className={styles.images} />
               <div className={styles.card_contnet}>
-                <p className={styles.card_text}>{movie.title}</p>
-                <button className={styles.genre_btn}>{movie.genre}</button>
+                <p className={styles.card_text}>{movie.Title}</p>
+                <button className={styles.genre_btn}>{movie.Genre}</button>
 
                 <div className={styles.raiting_body}>
                   <img src="IMDB.svg" />
                   <p className={styles.raiting_text}>
-                    {movie.rating} <img src="star-icon.svg" />
+                    {movie.imdbRating} <img src="star-icon.svg" />
                   </p>
                 </div>
 
-                <p className={styles.describe_text}> {movie.description}</p>
+                <p className={styles.describe_text}> {movie.Plot}</p>
                 <div className={styles.important_btns}>
                   <WatchTrailerBtn movie={movie} />
                   <button

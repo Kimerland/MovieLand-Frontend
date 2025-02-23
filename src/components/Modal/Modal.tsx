@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
 import ModalStyles from "../Modal/Modal.module.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-interface Movie {
-  title: string;
-  poster: string;
-  information: string;
-  director: string;
-  releaseDate: string;
-}
+import { ICinema } from "../CinemaContent/CinemaContent";
+
 export interface ModalProps {
   onClose: () => void;
-  movie: Movie;
+  movie: ICinema;
 }
 
 const Modal: React.FC<ModalProps> = ({ onClose, movie }) => {
@@ -36,12 +31,11 @@ const Modal: React.FC<ModalProps> = ({ onClose, movie }) => {
         <p className={ModalStyles.about_title}>About Film</p>
         <div className={ModalStyles.content}>
           <div className={ModalStyles.img_content}>
-            <img src={movie.poster} className={ModalStyles.poster_images} />
-            <p className={ModalStyles.information_text}>{movie.information}</p>
+            <img src={movie.Poster} className={ModalStyles.poster_images} />
+            <p className={ModalStyles.information_text}>{movie.Plot}</p>
           </div>
           <div className={ModalStyles.describe}>
-            <p>{movie.director}</p>
-            <p>{movie.releaseDate}</p>
+            <p>{movie.Year}</p>
           </div>
         </div>
       </div>

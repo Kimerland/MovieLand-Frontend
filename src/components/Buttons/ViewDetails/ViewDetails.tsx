@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "../ViewDetails/ViewDetails.module.scss";
 import Modal from "../../Modal/Modal";
-import { MoviesData } from "../../BodyMovies/dataMovies";
+import { ICinema } from "../../CinemaContent/CinemaContent";
 
 interface MovieProps {
   onClose?: () => void;
-  movie: MoviesData;
+  movie: ICinema;
 }
 
 const ViewDetails: React.FC<MovieProps> = ({ movie }) => {

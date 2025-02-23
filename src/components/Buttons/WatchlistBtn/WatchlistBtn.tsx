@@ -2,22 +2,18 @@ import React from "react";
 import styles from "../WatchlistBtn/WatchlistBtn.module.scss";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../../../redux/favourites/favourites.slice";
-
-interface MovieType {
-  id: number;
-  title: string;
-  rating: number;
-}
+import { ICinema } from "../../CinemaContent/CinemaContent";
 
 interface WatchProps {
-  movie: MovieType;
+  movie: ICinema;
 }
 
 const WatchlistBtn: React.FC<WatchProps> = ({ movie }) => {
   const dispatch = useDispatch();
 
   const handleAddToWatchlist = () => {
-    dispatch(addMovie(movie));
+    console.log("Adding movie:", { ...movie, id: movie.imdbID });
+    dispatch(addMovie({ ...movie, id: movie.imdbID }));
   };
 
   return (

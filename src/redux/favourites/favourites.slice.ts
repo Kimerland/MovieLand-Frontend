@@ -1,28 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ICinema } from "../../components/CinemaContent/CinemaContent";
 
-interface MovieType {
-  id: number;
-  title: string;
-  rating: number;
-}
-
-const initialState: MovieType[] = [];
+const initialState: ICinema[] = [];
 
 export const favouriteSlice = createSlice({
   name: "favourites",
   initialState,
   reducers: {
-    addMovie: (state, action: PayloadAction<MovieType>) => {
+    addMovie: (state, action: PayloadAction<ICinema>) => {
       const movie = action.payload;
       if (!state.some((item) => item.id === movie.id)) {
         state.push(movie);
       }
     },
-    removeMovie: (state, action: PayloadAction<number>) => {
+    removeMovie: (state, action: PayloadAction<string>) => {
       const movieId = action.payload;
       return state.filter((movie) => movie.id !== movieId);
     },
-    initialWatch: (state, action: PayloadAction<MovieType[]>) => {
+    initialWatch: (state, action: PayloadAction<ICinema[]>) => {
       return Array.isArray(action.payload) ? action.payload : [];
     },
   },

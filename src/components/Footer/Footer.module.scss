@@ -3,6 +3,10 @@
   background-color: #202020;
   padding: 40px;
   font-size: 14px;
+
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+  }
 }
 
 .container {
@@ -17,12 +21,34 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @media (max-width: 1075px) {
+    justify-content: center;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+  }
 }
 
 .logo_container {
   display: flex;
   gap: 15px;
   text-align: center;
+
+  @media (max-width: 1075px) {
+    padding-bottom: 50px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 50px;
+  }
 }
 
 .logo_style {
@@ -67,6 +93,18 @@
   gap: 50px;
   flex-wrap: wrap;
   min-width: 500px;
+
+  @media (max-width: 1080px) {
+    justify-content: center;
+    min-width: auto;
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
 .grid_section {
@@ -74,6 +112,10 @@
   flex-direction: column;
   gap: 15px;
   color: #fff;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 .bottom_section {
@@ -84,6 +126,13 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: 1080px) {
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 .bottom_text {
@@ -111,5 +160,10 @@
 
 .socials {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 }

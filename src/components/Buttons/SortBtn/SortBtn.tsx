@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "../../BodyMovies/BodyMovies.module.scss";
-import { MoviesData } from "../../BodyMovies/dataMovies";
+import { ICinema } from "../../CinemaContent/CinemaContent";
 
 interface FileredProps {
-  filtredMovies: MoviesData[];
-  setFiltredMovies: React.Dispatch<React.SetStateAction<MoviesData[]>>;
+  filtredMovies: ICinema[];
+  setFiltredMovies: React.Dispatch<React.SetStateAction<ICinema[]>>;
 }
 
 const SortBtn: React.FC<FileredProps> = ({
@@ -15,7 +15,9 @@ const SortBtn: React.FC<FileredProps> = ({
 
   const handleSort = () => {
     const sortedMovies = [...filtredMovies].sort((a, b) => {
-      return isAscending ? a.rating - b.rating : b.rating - a.rating;
+      return isAscending
+        ? a.imdbRating - b.imdbRating
+        : b.imdbRating - a.imdbRating;
     });
     setFiltredMovies(sortedMovies);
     setIsAscending(!isAscending);

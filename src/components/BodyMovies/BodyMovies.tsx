@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import movies, { MoviesData } from "./dataMovies";
 import styles from "./BodyMovies.module.scss";
 import SortBtn from "../Buttons/SortBtn/SortBtn";
 import WatchlistBtn from "../Buttons/WatchlistBtn/WatchlistBtn";
 import ViewDetails from "../Buttons/ViewDetails/ViewDetails";
+import { ICinema } from "../CinemaContent/CinemaContent";
 
 const BodyMovies: React.FC = () => {
   const [selectedGenre, setSelectedGenre] = useState<string>("All");
-  const [filtredMovies, setFiltredMovies] = useState<MoviesData[]>([]);
-
+  const [filtredMovies, setFiltredMovies] = useState<ICinema[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [movies, setMovies] = useState<ICinema[]>([]);
+  const [genres, setGenres] = useState<string[]>([]);
 
   const handleGenreChange = (genre: string) => {
     setSelectedGenre(genre);
@@ -17,13 +18,38 @@ const BodyMovies: React.FC = () => {
   };
 
   useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/movies/random");
+        const data = await response.json();
+        console.log(data);
+
+        setMovies(data);
+        setFiltredMovies(data);
+
+        const allGenres = new Set<string>();
+        data.forEach((movie: ICinema) => {
+          movie.Genre.split(", ").forEach((g) => allGenres.add(g));
+        });
+
+        setGenres(["All", ...Array.from(allGenres).sort()]);
+      } catch (error) {
+        console.log("Error", error);
+      }
+    };
+
+    fetchMovies();
+  }, []);
+
+  useEffect(() => {
     if (selectedGenre === "All") {
       setFiltredMovies(movies);
     } else {
-      setFiltredMovies(movies.filter((movie) => movie.genre === selectedGenre));
-      // a new array containing only those movies whose movie.genre === selected.genre
+      setFiltredMovies(
+        movies.filter((movie) => movie.Genre.includes(selectedGenre))
+      );
     }
-  }, [selectedGenre]); // useEffect will be work every time when selectedGenre was change
+  }, [selectedGenre, movies]);
 
   return (
     <main className={styles.main}>
@@ -48,12 +74,11 @@ const BodyMovies: React.FC = () => {
                   isDropdownOpen ? styles.open : ""
                 }`}
               >
-                <li onClick={() => handleGenreChange("All")}>All</li>
-                <li onClick={() => handleGenreChange("Action")}>Action</li>
-                <li onClick={() => handleGenreChange("Golden Globe Winner")}>
-                  Golden
-                </li>
-                <li onClick={() => handleGenreChange("Fiction")}>Fiction</li>
+                {genres.map((genre) => (
+                  <li key={genre} onClick={() => handleGenreChange(genre)}>
+                    {genre}
+                  </li>
+                ))}
               </ul>
             )}
           </button>
@@ -63,21 +88,23 @@ const BodyMovies: React.FC = () => {
           setFiltredMovies={setFiltredMovies}
         />
       </div>
-      {filtredMovies.map((movie) => (
-        <div key={movie.id} className={styles.card}>
-          <img src={movie.poster} className={styles.images} />
+
+      {filtredMovies.map((movie: ICinema) => (
+        <div key={movie.imdbID} className={styles.card}>
+          <img src={movie.Poster} className={styles.images} />
           <div className={styles.card_contnet}>
-            <p className={styles.card_text}>{movie.title}</p>
-            <button className={styles.genre_btn}>{movie.genre}</button>
+            <p className={styles.card_text}>{movie.Title}</p>
+
+            <button className={styles.genre_btn}>{movie.Genre}</button>
 
             <div className={styles.raiting_body}>
               <img src="IMDB.svg" className={styles.img_imdb} />
               <p className={styles.raiting_text}>
-                {movie.rating} <img src="star-icon.svg" />
+                {movie.imdbRating} <img src="star-icon.svg" />
               </p>
             </div>
 
-            <p className={styles.describe_text}> {movie.description}</p>
+            <p className={styles.describe_text}>{movie.Plot}</p>
             <div className={styles.important_btns}>
               <ViewDetails movie={movie} />
 
