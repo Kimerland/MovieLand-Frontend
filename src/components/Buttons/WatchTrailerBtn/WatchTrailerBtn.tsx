@@ -1,13 +1,28 @@
+import { useState, useEffect } from "react";
 import React from "react";
 import TrailerStyles from "../WatchTrailerBtn/WatchTrailerBtn.module.scss";
+import { ICinema } from "../../CinemaContent/CinemaContent";
 
-interface Movie {
-  movie: any;
-}
+const WatchTrailerBtn = ({ movie }: { movie: ICinema }) => {
+  const [videoId, setVideoId] = useState<string | null>(null);
 
-const WatchTrailerBtn: React.FC<Movie> = ({ movie }) => {
+  useEffect(() => {
+    if (!movie?.Title) return;
+    fetch(
+      `http://localhost:5000/api/movies/trailer?title=${encodeURIComponent(
+        movie.Title
+      )}`
+    )
+      .then((res) => res.json())
+      .then((data) => setVideoId(data.videoId));
+  }, [movie?.Title]);
+
   const openTrailer = () => {
-    window.open(movie.trailer);
+    if (videoId) {
+      window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
+    } else {
+      alert("No trailer available!");
+    }
   };
 
   return (

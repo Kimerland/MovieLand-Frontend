@@ -8,6 +8,7 @@ import SubscribePage from "./pages/SubscribePage";
 import MessagesPage from "./pages/MessagesPage";
 import CinemaHub from "./pages/CinemaHub";
 import WatchFilmsPage from "../src/pages/WatchFilmsPage";
+import SettingsPage from "../src/pages/SettingsPage";
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
         <Route path="/subscribe" element={<SubscribePage />} />
 
         <Route path="/messages" element={<MessagesPage />} />
+
+        <Route path="/settings" element={<SettingsPage />} />
       </Routes>
     </>
   );

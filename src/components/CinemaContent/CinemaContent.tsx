@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CinemaStyles from "../CinemaContent/CinemaContent.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export interface ICinema {
   id: string;
@@ -19,6 +19,17 @@ const CinemaContent = () => {
   const [showMovies, setShowMovies] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  const isSubscribed = Boolean(localStorage.getItem("subscription"));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSubscribed) {
+      navigate("/cinema");
+    } else {
+      navigate("/subscribe");
+      alert("You don't have subscription!");
+    }
+  });
 
   const handleRandom = async () => {
     try {

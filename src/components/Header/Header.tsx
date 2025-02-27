@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 
-interface User {
+export interface User {
   email: string;
 }
 

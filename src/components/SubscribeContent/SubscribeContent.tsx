@@ -1,7 +1,8 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import SubscribeStyles from "../SubscribeContent/SubscribeContent.module.scss";
 import { createPortal } from "react-dom";
 import ModalSubscribe from "../Modal/ModalSubscribe/ModalSubscribe";
+import { useNavigate } from "react-router-dom";
 
 export interface SubscribeProps {
   title: string;
@@ -23,6 +24,13 @@ const SubscribeContent: FC<SubscribeProps> = ({
 }) => {
   const [showModal, setShowModal] = useState(false);
   const isSubscribed = Boolean(localStorage.getItem("subscription"));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSubscribed) {
+      navigate("/subscribe");
+    }
+  }, [isSubscribed]);
 
   return (
     <div className={SubscribeStyles.subscription_card}>

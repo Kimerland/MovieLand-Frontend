@@ -11,33 +11,47 @@ const BodyMovies: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [movies, setMovies] = useState<ICinema[]>([]);
   const [genres, setGenres] = useState<string[]>([]);
+  const [year] = useState<number>(2025);
+  const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
   const handleGenreChange = (genre: string) => {
     setSelectedGenre(genre);
     setIsDropdownOpen(false);
   };
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/api/movies/random");
-        const data = await response.json();
-        console.log(data);
+  const fetchMovies = async () => {
+    if (!hasMore || loading) return;
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `http://localhost:5000/api/movies?year=${year}&page=${page}`
+      );
+      const data = await response.json();
 
-        setMovies(data);
-        setFiltredMovies(data);
-
-        const allGenres = new Set<string>();
-        data.forEach((movie: ICinema) => {
-          movie.Genre.split(", ").forEach((g) => allGenres.add(g));
-        });
-
-        setGenres(["All", ...Array.from(allGenres).sort()]);
-      } catch (error) {
-        console.log("Error", error);
+      if (data.length === 0) {
+        setHasMore(false);
+      } else {
+        setMovies((prevMovies) => [...prevMovies, ...data]);
+        setFiltredMovies((prevMovies) => [...prevMovies, ...data]);
+        setPage((prevPage) => prevPage + 1);
       }
-    };
 
+      const allGenres = new Set<string>();
+      data.forEach((movie: ICinema) => {
+        movie.Genre.split(", ").forEach((g) => allGenres.add(g));
+      });
+
+      setGenres(["All", ...Array.from(allGenres).sort()]);
+    } catch (error) {
+      console.log("Error", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchMovies();
   }, []);
 
@@ -107,12 +121,19 @@ const BodyMovies: React.FC = () => {
             <p className={styles.describe_text}>{movie.Plot}</p>
             <div className={styles.important_btns}>
               <ViewDetails movie={movie} />
-
               <WatchlistBtn movie={movie} />
             </div>
           </div>
         </div>
       ))}
+
+      {!loading && hasMore && (
+        <button className={styles.more_btn} onClick={fetchMovies}>
+          MORE
+        </button>
+      )}
+
+      {loading && <p className={styles.loading}>Loading...</p>}
     </main>
   );
 };

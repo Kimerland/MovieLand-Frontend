@@ -1,0 +1,79 @@
+.settings_wrapper {
+  min-height: 100vh;
+  padding: 100px 50px;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+}
+
+.settings_container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.settings_text {
+  font-size: 4.8rem;
+  line-height: 5.4rem;
+}
+
+.settings_block {
+  display: flex;
+  background-color: #383838;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.version_button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.profile_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.avatar_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.settings_avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user_text {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+}
+
+.email_text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 15px 0;
+}

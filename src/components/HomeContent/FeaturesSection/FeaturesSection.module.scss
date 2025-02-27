@@ -37,6 +37,7 @@
 
 @media (max-width: 1025px) {
   .card_grid {
+    display: none;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     max-width: 900px;
