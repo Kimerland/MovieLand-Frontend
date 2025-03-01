@@ -35,13 +35,42 @@ const SettingsContent = () => {
         <div className={StyleSettings.settings_container}>
           <p className={StyleSettings.settings_text}>Account Management</p>
           <div className={StyleSettings.settings_block}>
-            <img
-              className={`${StyleSettings.settings_avatar} ${StyleSettings.settings_avatar}`}
-              src={user.avatarUrl || "/profile.png"}
-              alt="User avatar"
-            />
-            <p className={StyleSettings.user_text}>{user.username}</p>
-            <p className={StyleSettings.email_text}>{user.email}</p>
+            <div className={StyleSettings.avatar_container}>
+              <img
+                className={StyleSettings.settings_avatar}
+                src={user.avatarUrl || "/profile.png"}
+                alt="User avatar"
+              />
+              <p className={StyleSettings.settings_view}>View</p>
+            </div>
+            {/*  */}
+            <div className={StyleSettings.user_info}>
+              <div className={StyleSettings.input_group}>
+                <label htmlFor="username" className={StyleSettings.input_label}>
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  className={StyleSettings.input_field}
+                  value={user.username}
+                  readOnly
+                />
+              </div>
+              <div className={StyleSettings.input_group}>
+                <label htmlFor="email" className={StyleSettings.input_label}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className={StyleSettings.input_field}
+                  value={user.email}
+                  readOnly
+                />
+              </div>
+            </div>
+            {/*  */}
           </div>
         </div>
       ) : (

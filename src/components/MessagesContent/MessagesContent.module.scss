@@ -50,9 +50,13 @@
 }
 
 .body_chat {
+  display: flex;
+  flex-direction: column;
   height: 600px;
   overflow-y: auto;
   padding: 25px 22px;
+  padding-bottom: 80px;
+  box-sizing: border-box;
 }
 
 .bot_message {

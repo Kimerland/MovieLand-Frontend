@@ -10,7 +10,7 @@ interface ChatMessage {
 interface ChatFormProps {
   setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
   generateBotResponse: (history: ChatMessage[]) => void;
-  chatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
+  chatHistory: ChatMessage[];
 }
 
 const ChatForm: FC<ChatFormProps> = ({

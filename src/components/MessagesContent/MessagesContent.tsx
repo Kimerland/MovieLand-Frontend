@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import MessagesStyle from "../MessagesContent/MessagesContent.module.scss";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import ChatForm from "./ChatForm/ChatForm";
@@ -17,6 +17,15 @@ interface ChatMessageType {
 const MessagesContent: FC = () => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const messageRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollToBottom = () => {
+    messageRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatHistory]);
 
   const generateBotResponse = async (history: ChatMessageType[]) => {
     if (isLoading) return;
@@ -66,6 +75,8 @@ const MessagesContent: FC = () => {
           {chatHistory.map((chat, index) => (
             <ChatMessage key={index} chat={chat} />
           ))}
+
+          <div ref={messageRef} />
         </div>
 
         <ChatForm

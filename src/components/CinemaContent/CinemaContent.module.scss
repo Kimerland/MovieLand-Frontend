@@ -56,6 +56,11 @@ a {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+
+  @media (max-width: 565px) {
+    max-width: 100px;
+    gap: 20px;
+  }
 }
 
 .movie_card {
@@ -67,6 +72,14 @@ a {
   width: 100%;
   height: auto;
   border-radius: 16px;
+
+  @media (max-width: 565px) {
+    .movies_cards {
+      width: 50%;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .movie_title {

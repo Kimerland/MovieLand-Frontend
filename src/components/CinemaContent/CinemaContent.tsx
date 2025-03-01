@@ -29,7 +29,7 @@ const CinemaContent = () => {
       navigate("/subscribe");
       alert("You don't have subscription!");
     }
-  });
+  }, [isSubscribed, navigate]);
 
   const handleRandom = async () => {
     try {
