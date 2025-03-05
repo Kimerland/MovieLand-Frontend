@@ -79,13 +79,13 @@ const SettingsContent = () => {
                 {editing ? (
                   <>
                     <button
-                      className={StyleSettings.save_button}
+                      className={StyleSettings.button_settings}
                       onClick={handleSave}
                     >
                       Save
                     </button>
                     <button
-                      className={StyleSettings.close_button}
+                      className={StyleSettings.button_settings}
                       onClick={() => setEditing(false)}
                     >
                       <CloseIcon />
@@ -93,7 +93,7 @@ const SettingsContent = () => {
                   </>
                 ) : (
                   <button
-                    className={StyleSettings.edit_button}
+                    className={StyleSettings.button_settings}
                     onClick={handleEditClick}
                   >
                     <EditIcon />
