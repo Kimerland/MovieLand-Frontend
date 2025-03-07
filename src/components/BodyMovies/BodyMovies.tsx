@@ -128,9 +128,11 @@ const BodyMovies: React.FC = () => {
       ))}
 
       {!loading && hasMore && (
-        <button className={styles.more_btn} onClick={fetchMovies}>
-          MORE
-        </button>
+        <div className={styles.more_container}>
+          <button className={styles.more_btn} onClick={fetchMovies}>
+            MORE
+          </button>
+        </div>
       )}
 
       {loading && <p className={styles.loading}>Loading...</p>}

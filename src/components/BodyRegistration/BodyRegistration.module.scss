@@ -26,6 +26,15 @@
   padding-bottom: 35px;
 }
 
+.error {
+  color: #a8a8a8;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
 .username {
   text-align: left;
 }
@@ -60,6 +69,13 @@ label {
   text-transform: uppercase;
   line-height: 257%;
   letter-spacing: 0.09em;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .butLog {
@@ -90,5 +106,6 @@ label {
 }
 
 .registerText {
+  text-decoration: underline;
   color: #ff9800;
 }

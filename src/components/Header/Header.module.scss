@@ -26,6 +26,13 @@
 .movie_logo {
   display: flex;
   gap: 8px;
+
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .title {
@@ -53,6 +60,12 @@
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .header_container {
@@ -75,6 +88,13 @@
   cursor: pointer;
   box-shadow: none;
   outline: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #ff9900bd;
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .login {
@@ -86,6 +106,10 @@
   line-height: 257%;
   letter-spacing: 0.09em;
   text-decoration: none;
+
+  &:hover {
+    color: (36, 36, 36) 20;
+  }
 }
 
 .lines {
@@ -102,6 +126,12 @@
   text-align: center;
   color: #fff;
   text-decoration: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .link_style {

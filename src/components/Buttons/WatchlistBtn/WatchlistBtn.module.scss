@@ -16,4 +16,10 @@
   min-width: 150px;
   max-width: 100%;
   white-space: nowrap;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }

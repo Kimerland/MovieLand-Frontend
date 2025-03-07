@@ -71,8 +71,8 @@ const BodyRegistration = () => {
         <label>
           <p className={styles.password}>Confirm Password</p>
           <input {...register("confirmPassword")} type="password" />
-          {errors.password && (
-            <p className={styles.error}>{errors.password.message}</p>
+          {errors.confirmPassword && (
+            <p className={styles.error}>{errors.confirmPassword.message}</p>
           )}
         </label>
 
@@ -80,7 +80,7 @@ const BodyRegistration = () => {
           <p className={styles.login}>Signup</p>
         </button>
         <p className={styles.userText}>
-          Registered User?
+          Registered User?{" "}
           <Link className={styles.registerText} to="/login">
             Login here
           </Link>

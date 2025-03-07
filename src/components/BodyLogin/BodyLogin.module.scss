@@ -72,6 +72,12 @@ label {
   box-shadow: none;
   outline: none;
   margin-bottom: 25px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .userText {
@@ -87,4 +93,5 @@ label {
 
 .registerText {
   color: #ff9800;
+  text-decoration: underline;
 }

@@ -73,7 +73,6 @@ const Header: React.FC<HeaderProps> = ({ isSticky }) => {
                 </Link>
               </button>
 
-              {/* add custom styles for join btn */}
               <button className={styles.butLog}>
                 <Link className={styles.login} to="/registration">
                   JOIN

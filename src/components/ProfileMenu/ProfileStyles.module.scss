@@ -5,7 +5,12 @@
   object-fit: cover;
   cursor: pointer;
   border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    filter: blur(0.2px);
+    transform: scale(1.03);
+  }
 }
 
 .profileContainer {
