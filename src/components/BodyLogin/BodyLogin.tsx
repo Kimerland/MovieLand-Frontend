@@ -32,7 +32,7 @@ const BodyLogin = () => {
   const handleLogin = async (data: LoginSchemaType) => {
     try {
       const response = await axios.post<LoginRespons>(
-        "http://localhost:5000/api/login",
+        "https://movieland-backend.up.railway.app/api/login",
         data
       );
 

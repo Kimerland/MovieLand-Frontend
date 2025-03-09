@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "http://localhost:3000",
+      "/api": "https://movieland-backend.up.railway.app/",
     },
   },
   plugins: [react()],

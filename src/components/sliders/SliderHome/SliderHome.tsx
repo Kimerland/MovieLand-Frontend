@@ -10,7 +10,9 @@ const SliderHome = () => {
 
   const fetchPhotos = async (): Promise<void> => {
     try {
-      const response = await fetch("http://localhost:5000/api/photos");
+      const response = await fetch(
+        "https://movieland-backend.up.railway.app/api/photos"
+      );
       const photos: Image[] = await response.json();
       SetImages(photos);
     } catch (error) {
@@ -38,7 +40,7 @@ const SliderHome = () => {
         {images.map((image: Image, id: number) => (
           <img
             key={id}
-            src={`http://localhost:5000/api/photos/${image}`}
+            src={`https://movieland-backend.up.railway.app/api/photos/${image}`}
             className={`${StyleSlider.background_image} ${
               id === index ? StyleSlider.active : ""
             }`}

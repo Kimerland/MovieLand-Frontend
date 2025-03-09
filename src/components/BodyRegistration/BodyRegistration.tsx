@@ -21,7 +21,7 @@ const BodyRegistration = () => {
   const handleRegistration = async (data: RegistrationSchemaType) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/register",
+        "https://movieland-backend.up.railway.app/api/register",
         data
       );
 

@@ -5,7 +5,8 @@ export const subscriptions = [
     newPrice: 14.99,
     description: "All benefits + 4K streaming & offline downloads",
     buttonText: "Get now",
-    imgSrc: "http://localhost:5000/api/images/Subscribe_premium.png",
+    imgSrc:
+      "https://movieland-backend.up.railway.app/api/images/Subscribe_premium.png",
   },
   {
     title: "MovieLand Plus",
@@ -13,7 +14,8 @@ export const subscriptions = [
     newPrice: 9.99,
     description: "All benefits + 4K streaming & offline downloads",
     buttonText: "Get now",
-    imgSrc: "http://localhost:5000/api/images/Subscribe_premium.png",
+    imgSrc:
+      "https://movieland-backend.up.railway.app/api/images/Subscribe_premium.png",
   },
   {
     title: "MovieLand Standard",
@@ -21,7 +23,8 @@ export const subscriptions = [
     newPrice: 8.99,
     description: "All benefits + 4K streaming & offline downloads",
     buttonText: "Get now",
-    imgSrc: "http://localhost:5000/api/images/Subscribe_premium.png",
+    imgSrc:
+      "https://movieland-backend.up.railway.app/api/images/Subscribe_premium.png",
   },
   {
     title: "MovieLand Light",
@@ -29,6 +32,7 @@ export const subscriptions = [
     newPrice: 5.99,
     description: "All benefits + 4K streaming & offline downloads",
     buttonText: "Get now",
-    imgSrc: "http://localhost:5000/api/images/Subscribe_premium.png",
+    imgSrc:
+      "https://movieland-backend.up.railway.app/api/images/Subscribe_premium.png",
   },
 ];
